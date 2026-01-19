@@ -213,47 +213,19 @@
             color: var(--secondary);
         }
         
-        /* Progress bar styling */
-        .progress-container {
+        .msc-header {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 15px;
-            margin-top: 10px;
-        }
-        
-        .progress-label {
-            font-size: 0.9rem;
-            color: var(--primary);
-            font-weight: 600;
-            white-space: nowrap;
-        }
-        
-        .progress-bar {
-            flex-grow: 1;
-            height: 8px;
-            background-color: var(--gray-light);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border-radius: 4px;
-            width: 65%; /* Adjust this for actual progress */
-        }
-        
-        .msc-progress {
-            display: flex;
-            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
             gap: 10px;
-            margin-top: 10px;
         }
         
         .in-progress-badge {
-            background-color: var(--primary);
+            background-color: var(--success);
             color: white;
-            padding: 4px 12px;
+            padding: 6px 16px;
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 600;
@@ -488,6 +460,7 @@
         
         .education-card h3 {
             color: var(--primary);
+            margin-bottom: 10px;
         }
         
         .date {
@@ -836,15 +809,6 @@
             .profile-container {
                 height: 350px;
             }
-            
-            .progress-container {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .progress-bar {
-                width: 100%;
-            }
         }
         
         @media (max-width: 768px) {
@@ -894,10 +858,10 @@
                 grid-template-columns: 1fr;
             }
             
-            .msc-progress {
+            .msc-header {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 5px;
+                gap: 10px;
             }
         }
         
@@ -1080,7 +1044,7 @@
             <h2>Education</h2>
             <div class="education-container">
                 <div class="education-card">
-                    <div class="msc-progress">
+                    <div class="msc-header">
                         <span class="date">Sept 2025 – Sept 2026</span>
                         <span class="in-progress-badge">In Progress</span>
                     </div>
@@ -1232,7 +1196,7 @@
                         
                         <div class="project-links">
                             <a href="https://student-enrollment-system-flax.vercel.app/" target="_blank" class="link-btn">
-                                <i class="fas fa-external-link-alt"></i> Vercel Demo
+                                <i class="fas fa-external-link-alt"></i>Demo
                             </a>
                             <a href="https://github.com/kyalsinhein/student_enrollment_system" target="_blank" class="link-btn">
                                 <i class="fab fa-github"></i> GitHub
@@ -1380,38 +1344,6 @@
             card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
             observer.observe(card);
         });
-        
-        // Update MSc progress based on current date
-        function updateMScProgress() {
-            const startDate = new Date('2025-09-01');
-            const endDate = new Date('2026-09-01');
-            const currentDate = new Date();
-            
-            const totalDuration = endDate - startDate;
-            const elapsedDuration = currentDate - startDate;
-            
-            let progressPercentage = 0;
-            
-            if (currentDate < startDate) {
-                progressPercentage = 0;
-            } else if (currentDate > endDate) {
-                progressPercentage = 100;
-            } else {
-                progressPercentage = (elapsedDuration / totalDuration) * 100;
-            }
-            
-            // Cap between 0 and 100
-            progressPercentage = Math.max(0, Math.min(100, progressPercentage));
-            
-            // Update progress bar
-            const progressFill = document.querySelector('.progress-fill');
-            if (progressFill) {
-                progressFill.style.width = `${progressPercentage}%`;
-            }
-        }
-        
-        // Initialize progress on page load
-        document.addEventListener('DOMContentLoaded', updateMScProgress);
     </script>
 </body>
 </html>
