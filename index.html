@@ -212,13 +212,59 @@
             cursor: pointer;
             color: var(--secondary);
         }
-    
+        
+        /* Progress bar styling */
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .progress-label {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        
+        .progress-bar {
+            flex-grow: 1;
+            height: 8px;
+            background-color: var(--gray-light);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 4px;
+            width: 65%; /* Adjust this for actual progress */
+        }
+        
+        .msc-progress {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .in-progress-badge {
+            background-color: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        
         .address-info {
             display: flex;
             align-items: flex-start;
             gap: 10px;
             color: var(--gray);
-            
         }
 
         .address-icon {
@@ -590,6 +636,7 @@
             display: flex;
             gap: 15px;
             margin-top: 20px;
+            flex-wrap: wrap;
         }
         
         .link-btn {
@@ -603,6 +650,7 @@
             font-weight: 500;
             color: var(--secondary);
             border: 1px solid var(--gray-light);
+            transition: var(--transition);
         }
         
         .link-btn:hover {
@@ -788,6 +836,15 @@
             .profile-container {
                 height: 350px;
             }
+            
+            .progress-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .progress-bar {
+                width: 100%;
+            }
         }
         
         @media (max-width: 768px) {
@@ -836,6 +893,12 @@
             .projects-container {
                 grid-template-columns: 1fr;
             }
+            
+            .msc-progress {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -874,6 +937,14 @@
             .github-header {
                 padding: 6px 12px;
                 font-size: 0.9rem;
+            }
+            
+            .project-links {
+                flex-direction: column;
+            }
+            
+            .link-btn {
+                justify-content: center;
             }
         }
     </style>
@@ -975,7 +1046,6 @@
                             <ul>
                                 <li>MySQL</li>
                                 <li>SQLite</li>
-                                <li>SQL</li>
                             </ul>
                         </div>
                         <div class="skill-category">
@@ -1010,11 +1080,21 @@
             <h2>Education</h2>
             <div class="education-container">
                 <div class="education-card">
-                    <span class="date">Sept 2025 – Sept 2026</span>
-                    <div class="achievement-badge">In Progress</div>
+                    <div class="msc-progress">
+                        <span class="date">Sept 2025 – Sept 2026</span>
+                        <span class="in-progress-badge">In Progress</span>
+                    </div>
+                    
+                    <div class="progress-container">
+                        <span class="progress-label">MSc Information Technology</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65%;"></div>
+                        </div>
+                    </div>
+                    
                     <h3>MSc Information Technology</h3>
                     <p class="institution">University of the West of England, Bristol</p>
-                    <p><strong>Focus:</strong> Software Development, Cloud Solutions & Data</p>
+                    <p><strong>Focus:</strong> Software Development, Cloud Computing & Data</p>
                     <ul>
                         <li>Digital Design & Development</li>
                         <li>Cloud Computing</li>
@@ -1077,16 +1157,15 @@
                         
                         <div class="project-features">
                             <ul>
-                                <li>Built a full-stack web app (Python, JavaScript, HTML, CSS) with 3 core bus stop search features.</li>
-                                <li>Processed 300+ Bristol Open Data (GeoJSON) bus stop records into a searchable format.</li>
-                                <li>Developed 4+ interactive, responsive UI components for search and filtering.</li>
-                                <li>Improved lookup speed by unifying 3 search methods into one interface.</li>
+                                <li>Implemented 3 core navigation features (keyword search, filtering, and nearest-stop detection) using Flask and RESTful APIs, delivering full end-to-end functionality.</li>
+                                <li>Created 4+ interactive UI components with HTML, CSS, and JavaScript, improving user experience and engagement.</li>
+                                <li>Optimized map performance by rendering and filtering 1,000+ GeoJSON records with custom logic, ensuring smooth and responsive demonstrations.</li>
                             </ul>
                         </div>
                         
                         <div class="project-links">
-                            <a href="https://bus-stop-explorer.onrender.com" target="_blank" class="link-btn">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            <a href="https://bus-stop-explorer.vercel.app/" target="_blank" class="link-btn">
+                                <i class="fas fa-external-link-alt"></i>Demo
                             </a>
                             <a href="https://github.com/kyalsinhein/bus_stop_explorer" target="_blank" class="link-btn">
                                 <i class="fab fa-github"></i> GitHub
@@ -1115,14 +1194,16 @@
                         
                         <div class="project-features">
                             <ul>
-                               <li>Led a 3-person Agile team to deliver a Flask full-stack app in 33 days, earning a 100% project score.</li>
-                               <li>Built CRUD features and admin dashboards using Python, Flask, SQLite, and Bootstrap.</li>
-                               <li>Managed 100+ simulated user records through structured database and UI design.</li>
-                               <li>Improved team efficiency by 20% using Agile workflows, Git, and code reviews.</li>
+                               <li>Led a 4-developer Agile team to deliver a production-ready Flask application in 33 days, successfully meeting all project requirements.</li>
+                               <li>Optimized database and UI logic by implementing CRUD functions for 100+ users, improving efficiency and reducing redundant operations.</li>
+                               <li>Maintained code quality via reviews, Agile workflows, and Git, reducing bugs and boosting team efficiency.</li>
                             </ul>
                         </div>
                         
                         <div class="project-links">
+                            <a href="https://gym-management-system-blue-three.vercel.app/" target="_blank" class="link-btn">
+                                <i class="fas fa-external-link-alt"></i>Demo
+                            </a>
                             <a href="https://github.com/kyalsinhein/gym_management_system" target="_blank" class="link-btn">
                                 <i class="fab fa-github"></i> GitHub
                             </a>
@@ -1150,14 +1231,16 @@
                         
                         <div class="project-features">
                             <ul>
-                                <li>Engineered secure authentication using Flask-Login, Python, and SQLite, protecting 50+ user accounts.</li>
-                                <li>Implemented validated CRUD operations to ensure reliable enrollment and data management.</li>
-                                <li>Developed a user-friendly web interface with HTML, CSS, JavaScript, and Bootstrap, praised for usability.</li>
-                                <li>Achieved a 70%+ overall project score (80% documentation) through strong structure, reporting, and Git version control.</li>
+                                <li>Built a secure login system with hashlib and sessions for admin and user, preventing unauthorized access.</li>
+                                <li>Designed a user-friendly interface with Flask templates and Bootstrap, improving usability across all workflows and receiving positive evaluator feedback for clarity and design.</li>
+                                <li>Delivered a fully working system with a clear development pipeline and structured report, achieving an overall project score of 70%. </li>
                             </ul>
                         </div>
                         
                         <div class="project-links">
+                            <a href="https://student-enrollment-system-flax.vercel.app/" target="_blank" class="link-btn">
+                                <i class="fas fa-external-link-alt"></i> Vercel Demo
+                            </a>
                             <a href="https://github.com/kyalsinhein/student_enrollment_system" target="_blank" class="link-btn">
                                 <i class="fab fa-github"></i> GitHub
                             </a>
@@ -1304,6 +1387,38 @@
             card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
             observer.observe(card);
         });
+        
+        // Update MSc progress based on current date
+        function updateMScProgress() {
+            const startDate = new Date('2025-09-01');
+            const endDate = new Date('2026-09-01');
+            const currentDate = new Date();
+            
+            const totalDuration = endDate - startDate;
+            const elapsedDuration = currentDate - startDate;
+            
+            let progressPercentage = 0;
+            
+            if (currentDate < startDate) {
+                progressPercentage = 0;
+            } else if (currentDate > endDate) {
+                progressPercentage = 100;
+            } else {
+                progressPercentage = (elapsedDuration / totalDuration) * 100;
+            }
+            
+            // Cap between 0 and 100
+            progressPercentage = Math.max(0, Math.min(100, progressPercentage));
+            
+            // Update progress bar
+            const progressFill = document.querySelector('.progress-fill');
+            if (progressFill) {
+                progressFill.style.width = `${progressPercentage}%`;
+            }
+        }
+        
+        // Initialize progress on page load
+        document.addEventListener('DOMContentLoaded', updateMScProgress);
     </script>
 </body>
 </html>
