@@ -1129,8 +1129,8 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#education">Education</a></li>
-                <li><a href="#iot-projects">IoT Project</a></li>
                 <li><a href="#projects">Web Project</a></li>
+                <li><a href="#iot-projects">IoT Project</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -1146,9 +1146,8 @@
                     <p>Results-driven software engineer with practical experience in full-stack web development and IoT
                         systems. Strong at delivering scalable, user-focused solutions using Agile practices and meeting
                         tight deadlines.</p>
-                    <a href="#iot-projects" class="btn">View IoT Project</a>
                     <a href="#projects" class="btn btn-outline">View Web Project</a>
-
+                     <a href="#iot-projects" class="btn">View IoT Project</a>
                     <div class="contact-links">
                         <a href="https://github.com/kyalsinhein" target="_blank" class="contact-link">
                             <i class="fab fa-github"></i>
@@ -1302,84 +1301,7 @@
         </div>
     </section>
 
-    <!-- IoT Projects Section -->
-    <section id="iot-projects">
-        <div class="container">
-            <h2>IoT Project</h2>
-            <div class="iot-project-container">
-                <!-- IoT Automatic Door Opening System -->
-                <div class="iot-project-detail">
-                    <!-- Photo Carousel on Left -->
-                    <div class="iot-carousel-container">
-                        <div class="iot-carousel" id="iotCarousel">
-                            <div class="carousel-slide active">
-                                <img src="./image1.jpg" alt="Arduino Setup">
-
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="./image2.jpg" alt="Circuit Diagram">
-
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="./image3.jpg" alt="Mobile App Interface">
-
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="./image4.jpg" alt="Final Product">
-
-                            </div>
-                        </div>
-                        <button class="carousel-btn prev-btn" onclick="changeIotSlide(-1)">❮</button>
-                        <button class="carousel-btn next-btn" onclick="changeIotSlide(1)">❯</button>
-                        <div class="carousel-dots">
-                            <span class="dot active" onclick="goToIotSlide(0)"></span>
-                            <span class="dot" onclick="goToIotSlide(1)"></span>
-                            <span class="dot" onclick="goToIotSlide(2)"></span>
-                            <span class="dot" onclick="goToIotSlide(3)"></span>
-                        </div>
-                    </div>
-
-                    <!-- Description on Right -->
-                    <div class="iot-project-info">
-                        <h3>Automatic Door Opening System with Arduino</h3>
-                        <p style="font-style: italic;">IoT Developer | Aug 2023- Sept 2023</p>
-                        <p>Designed and implemented a smart door system using Arduino Uno with motion detection feature.</p>
-
-                        <div class="project-tech">
-                            <span class="tech-tag arduino-tag">Arduino Uno</span>
-                            <span class="tech-tag iot-tag">IoT</span>
-                            <span class="tech-tag">IR Sensors</span>
-                            <span class="tech-tag">Servo Motor</span>
-                            <span class="tech-tag">Breadboard</span>
-                            <span class="tech-tag">Jumper Cables</span>
-
-                        </div>
-
-                        <div class="project-features">
-                            <ul>
-                                <li>Developed an Arduino-based parking system using IR sensors and servo motors to
-                                    automatically manage entry/exit gates</li>
-                                <li>Implemented real-time slot tracking with an LCD display, successfully monitoring 4
-                                    parking spaces with accurate availability updates</li>
-                                <li>Programmed servo control logic that responded to sensor inputs, resulting in
-                                    automated gate operation and reliable vehicle detection</li>
-                            </ul>
-                        </div>
-
-                        <div class="project-links">
-                            <a href="https://github.com/kyalsinhein/arduino_car_parking_system" target="_blank" class="link-btn">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-    <!-- Web Projects Section (Existing Projects) -->
+    <!-- Web Projects Section  -->
     <section id="projects">
         <div class="container">
             <h2>Web Development Projects</h2>
@@ -1508,6 +1430,81 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- IoT Projects Section -->
+    <section id="iot-projects">
+        <div class="container">
+            <h2>IoT Project</h2>
+            <div class="iot-project-container">
+                <!-- IoT Automatic Door Opening System -->
+                <div class="iot-project-detail">
+                    <!-- Photo Carousel on Left -->
+                    <div class="iot-carousel-container">
+                        <div class="iot-carousel" id="iotCarousel">
+                            <div class="carousel-slide active">
+                                <img src="./image1.jpg" alt="Arduino Setup">
+
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="./image2.jpg" alt="Circuit Diagram">
+
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="./image3.jpg" alt="Mobile App Interface">
+
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="./image4.jpg" alt="Final Product">
+
+                            </div>
+                        </div>
+                        <button class="carousel-btn prev-btn" onclick="changeIotSlide(-1)">❮</button>
+                        <button class="carousel-btn next-btn" onclick="changeIotSlide(1)">❯</button>
+                        <div class="carousel-dots">
+                            <span class="dot active" onclick="goToIotSlide(0)"></span>
+                            <span class="dot" onclick="goToIotSlide(1)"></span>
+                            <span class="dot" onclick="goToIotSlide(2)"></span>
+                            <span class="dot" onclick="goToIotSlide(3)"></span>
+                        </div>
+                    </div>
+
+                    <!-- Description on Right -->
+                    <div class="iot-project-info">
+                        <h3>Automatic Door Opening System with Arduino</h3>
+                        <p style="font-style: italic;">IoT Developer | Aug 2023- Sept 2023</p>
+                        <p>Designed and implemented a smart door system using Arduino Uno with motion detection feature.</p>
+
+                        <div class="project-tech">
+                            <span class="tech-tag arduino-tag">Arduino Uno</span>
+                            <span class="tech-tag iot-tag">IoT</span>
+                            <span class="tech-tag">IR Sensors</span>
+                            <span class="tech-tag">Servo Motor</span>
+                            <span class="tech-tag">Breadboard</span>
+                            <span class="tech-tag">Jumper Cables</span>
+
+                        </div>
+
+                        <div class="project-features">
+                            <ul>
+                                <li>Developed an Arduino-based parking system using IR sensors and servo motors to
+                                    automatically manage entry/exit gates</li>
+                                <li>Implemented real-time slot tracking with an LCD display, successfully monitoring 4
+                                    parking spaces with accurate availability updates</li>
+                                <li>Programmed servo control logic that responded to sensor inputs, resulting in
+                                    automated gate operation and reliable vehicle detection</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="https://github.com/kyalsinhein/arduino_car_parking_system" target="_blank" class="link-btn">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
