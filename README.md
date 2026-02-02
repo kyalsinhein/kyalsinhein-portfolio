@@ -1,3 +1,3 @@
 # kyalsinhein-portfolio
 
-Hosted at : https://kyalsinhein-portfolio.vercel.app/
+Hosting at : https://kyalsinhein-portfolio.vercel.app/
