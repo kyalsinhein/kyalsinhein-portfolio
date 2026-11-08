@@ -121,7 +121,8 @@ nav{position:fixed;top:0;left:0;width:100%;background-color:rgba(248,250,252,0.8
 #projects{background:white}
 .projects-container{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
 .project-card{background:white;border-radius:14px;overflow:hidden;height:100%;box-shadow:0 4px 16px rgba(0,0,0,0.06);transition:var(--transition);border:1px solid var(--gray-light);position:relative}
-.project-card:hover{transform:translateY(-10px);box-shadow:0 24px 48px rgba(0,0,0,0.12);border-color:transparent}
+/* Subtle hover: small lift only, no 3D tilt */
+.project-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,0.10);border-color:transparent}
 .project-img{height:200px;display:flex;align-items:center;justify-content:center;color:white;font-size:3.5rem;position:relative;overflow:hidden}
 .project-img::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 20px,rgba(255,255,255,0.03) 20px,rgba(255,255,255,0.03) 40px)}
 .project-card{display:flex;flex-direction:column}
@@ -138,7 +139,7 @@ nav{position:fixed;top:0;left:0;width:100%;background-color:rgba(248,250,252,0.8
 .link-btn{display:flex;align-items:center;gap:7px;padding:8px 16px;background:var(--light);border-radius:7px;font-size:0.88rem;font-weight:600;color:var(--secondary);border:1px solid var(--gray-light);transition:var(--transition)}
 .link-btn:hover{background:var(--primary);color:white;border-color:var(--primary);transform:translateY(-2px)}
 .project-featured{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);border:1px solid var(--gray-light);transition:var(--transition)}
-.project-featured:hover{transform:translateY(-8px);box-shadow:0 24px 50px rgba(0,0,0,0.12);border-color:transparent}
+.project-featured:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,0.10);border-color:transparent}
 .project-featured .project-img{height:100%;min-height:240px}
 .project-featured .project-content{padding:36px}
 #iot-projects{background:var(--light);padding:100px 0}
@@ -188,7 +189,7 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 .glitch:hover::after{color:var(--accent2);left:-2px;animation:glitch2 0.4s steps(2) infinite}
 @keyframes glitch1{0%,100%{clip-path:inset(0 0 80% 0)}50%{clip-path:inset(30% 0 40% 0)}}
 @keyframes glitch2{0%,100%{clip-path:inset(60% 0 0 0)}50%{clip-path:inset(0 0 60% 0)}}
-/* Fix: tilt-card no longer overrides the reveal fade-in transition */
+/* tilt-card no longer overrides the reveal fade-in transition */
 .tilt-card{transform-style:preserve-3d}
 .reveal.tilt-card{transition:opacity 0.7s ease,transform 0.2s ease,box-shadow 0.35s ease,border-color 0.35s ease}
 #scroll-top{position:fixed;bottom:30px;right:30px;width:48px;height:48px;background:var(--primary);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:none;z-index:500;box-shadow:0 8px 20px rgba(37,99,235,0.35);opacity:0;pointer-events:none;transition:var(--transition);border:none;font-size:1.1rem}
@@ -361,7 +362,7 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 <h2 class="reveal">Software Projects</h2>
 <div class="projects-container">
 
-<div class="project-card project-featured tilt-card reveal">
+<div class="project-card project-featured reveal">
 <div class="project-img" style="background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);"><i class="fas fa-shield-halved"></i></div>
 <div class="project-content">
 <h3>Cloud Sentinel Remediation Engine [MSc Project]</h3>
@@ -385,7 +386,7 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 </div>
 </div>
 
-<div class="project-card tilt-card reveal stagger-1">
+<div class="project-card reveal stagger-1">
 <div class="project-img" style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%);"><i class="fa-solid fa-robot"></i></div>
 <div class="project-content">
 <h3>AI Chatbot [Local LLM Integration]</h3>
@@ -406,7 +407,7 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 </div>
 </div>
 
-<div class="project-card tilt-card reveal stagger-2">
+<div class="project-card reveal stagger-2">
 <div class="project-img" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);"><i class="fas fa-bus"></i></div>
 <div class="project-content">
 <h3>Bristol Bus Stop Explorer</h3>
@@ -426,7 +427,7 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 </div>
 </div>
 
-<div class="project-card tilt-card reveal stagger-1">
+<div class="project-card reveal stagger-1">
 <div class="project-img" style="background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);"><i class="fas fa-dumbbell"></i></div>
 <div class="project-content">
 <h3>Gym Management System</h3>
@@ -445,7 +446,7 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 </div>
 </div>
 
-<div class="project-card tilt-card reveal stagger-2">
+<div class="project-card reveal stagger-2">
 <div class="project-img" style="background: linear-gradient(135deg, #8b5cf6 0%, #2563eb 100%);"><i class="fas fa-user-graduate"></i></div>
 <div class="project-content">
 <h3>Student Enrollment System</h3>
@@ -617,7 +618,7 @@ navLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+cu
 });
 scrollTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-// Reveal on scroll. After the entrance finishes, clear the stagger delay so hover/tilt feels instant.
+// Reveal on scroll. After the entrance finishes, clear the stagger delay so hover feels instant.
 const revealEls=document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
 const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){
 e.target.classList.add('visible');
@@ -638,6 +639,7 @@ counterObserver.unobserve(e.target);
 },{threshold:0.5});
 counters.forEach(c=>counterObserver.observe(c));
 
+// Gentle tilt for Skills and Education cards only (project cards no longer use it)
 if(!isTouch){
 document.querySelectorAll('.tilt-card').forEach(card=>{
 card.addEventListener('mousemove',e=>{
@@ -645,7 +647,7 @@ if(!card.classList.contains('visible'))return;
 const rect=card.getBoundingClientRect();
 const x=(e.clientX-rect.left)/rect.width-0.5;
 const y=(e.clientY-rect.top)/rect.height-0.5;
-card.style.transform=`perspective(600px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateY(-6px)`;
+card.style.transform=`perspective(1000px) rotateY(${x*2}deg) rotateX(${-y*2}deg) translateY(-3px)`;
 });
 card.addEventListener('mouseleave',()=>{card.style.transform=''});
 });
