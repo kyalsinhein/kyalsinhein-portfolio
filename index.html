@@ -88,7 +88,7 @@ nav{position:fixed;top:0;left:0;width:100%;background-color:rgba(248,250,252,0.8
 .contact-link:hover{transform:translateY(-5px);box-shadow:0 12px 24px rgba(0,0,0,0.12);color:var(--primary)}
 .contact-link i{color:var(--primary)}
 .stats-strip{background:linear-gradient(135deg,var(--secondary) 0%,#1e293b 100%);padding:48px 0;overflow:hidden}
-.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;max-width:900px;margin:0 auto}
+.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;max-width:900px;margin:0 auto}
 .stat-item{text-align:center;padding:10px;border-right:1px solid rgba(255,255,255,0.08)}
 .stat-item:last-child{border-right:none}
 .stat-number{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;color:white;display:block}
@@ -196,7 +196,7 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 #scroll-top:hover{transform:translateY(-4px) scale(1.1)}
 .nav-links a.active{color:var(--primary)}
 .nav-links a.active::after{width:100%}
-@media(max-width:992px){.hero,.about-content,.iot-project-detail{grid-template-columns:1fr}.projects-container{grid-template-columns:1fr}.project-featured{grid-template-columns:1fr}.project-featured .project-img{min-height:200px}.stats-grid{grid-template-columns:repeat(3,1fr)}.profile-container{height:360px}.orbit-wrapper{height:360px}}
+@media(max-width:992px){.hero,.about-content,.iot-project-detail{grid-template-columns:1fr}.projects-container{grid-template-columns:1fr}.project-featured{grid-template-columns:1fr}.project-featured .project-img{min-height:200px}.stats-grid{grid-template-columns:repeat(2,1fr)}.profile-container{height:360px}.orbit-wrapper{height:360px}}
 @media(max-width:768px){.mobile-menu-btn{display:block}.nav-links{position:fixed;top:75px;left:-100%;width:100%;flex-direction:column;background:white;padding:28px;box-shadow:0 10px 30px rgba(0,0,0,0.1);transition:var(--transition);z-index:999;gap:18px}.nav-links.active{left:0}.education-container{grid-template-columns:1fr}.stat-label{font-size:0.7rem;letter-spacing:1px}}
 @media(max-width:576px){section{padding:70px 0}.iot-carousel-container{height:280px}.education-container{grid-template-columns:1fr}}
 @media (hover: none), (pointer: coarse), (max-width: 768px) {
@@ -271,7 +271,6 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 <div class="stats-grid">
 <div class="stat-item reveal stagger-1"><span class="stat-number" data-target="619"><span class="count">0</span></span><p class="stat-label">Cloud Findings Screened</p></div>
 <div class="stat-item reveal stagger-2"><span class="stat-number" data-target="1000"><span class="count">0</span>+</span><p class="stat-label">Bus Stops Mapped</p></div>
-<div class="stat-item reveal stagger-3"><span class="stat-number" data-target="33"><span class="count">0</span></span><p class="stat-label">Days to Ship Gym App</p></div>
 </div>
 </div>
 </div>
