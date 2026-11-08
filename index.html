@@ -120,11 +120,13 @@ nav{position:fixed;top:0;left:0;width:100%;background-color:rgba(248,250,252,0.8
 .education-card ul li::before{content:'•';position:absolute;left:0;color:var(--primary);font-weight:bold}
 #projects{background:white}
 .projects-container{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
-.project-card{background:white;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.06);transition:var(--transition);border:1px solid var(--gray-light);position:relative}
+.project-card{background:white;border-radius:14px;overflow:hidden;height:100%;box-shadow:0 4px 16px rgba(0,0,0,0.06);transition:var(--transition);border:1px solid var(--gray-light);position:relative}
 .project-card:hover{transform:translateY(-10px);box-shadow:0 24px 48px rgba(0,0,0,0.12);border-color:transparent}
 .project-img{height:200px;display:flex;align-items:center;justify-content:center;color:white;font-size:3.5rem;position:relative;overflow:hidden}
 .project-img::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 20px,rgba(255,255,255,0.03) 20px,rgba(255,255,255,0.03) 40px)}
-.project-content{padding:24px}
+.project-card{display:flex;flex-direction:column}
+.project-content{padding:24px;flex:1;display:flex;flex-direction:column}
+.project-content .project-links{margin-top:auto;padding-top:20px}
 .project-content h3{margin-bottom:6px;color:var(--secondary);font-size:1.15rem}
 .project-date{font-style:italic;font-size:0.85rem;color:var(--gray);margin-bottom:10px;font-family:'DM Mono',monospace}
 .project-tech{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
@@ -385,27 +387,6 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 </div>
 
 <div class="project-card tilt-card reveal stagger-1">
-<div class="project-img" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);"><i class="fas fa-bus"></i></div>
-<div class="project-content">
-<h3>Bristol Bus Stop Explorer</h3>
-<p class="project-date">Full-Stack Developer · Sep 2025 – Dec 2025</p>
-<p style="font-size:0.9rem;">Built and deployed on Vercel a full-stack Flask/SQLite application with optimised GeoJSON rendering, enabling commuters to locate any of 1,000+ Bristol bus stops on a single interactive map.</p>
-<div class="project-tech"><span class="tech-tag">Flask</span><span class="tech-tag">GeoJSON</span><span class="tech-tag">JavaScript</span><span class="tech-tag">Jinja2</span><span class="tech-tag">SQLite</span><span class="tech-tag">Vercel</span></div>
-<div class="project-features">
-<ul>
-<li>Derived 4 user requirements from commuter journey analysis (search, filter by bus authority, nearby stops, saved favourites) and implemented each to support a specific step of the journey.</li>
-<li>Developed a mobile-responsive frontend with map/table view toggling, search, and favourites, improving usability and navigation.</li>
-<li>Reviewed every GitHub Copilot and OpenAI Codex output manually before integrating it, maintaining code quality during AI-assisted prototyping.</li>
-</ul>
-</div>
-<div class="project-links">
-<a href="https://bus-stop-explorer.vercel.app/" target="_blank" rel="noopener" class="link-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-<a href="https://github.com/kyalsinhein/bus_stop_explorer" target="_blank" rel="noopener" class="link-btn"><i class="fab fa-github"></i> GitHub</a>
-</div>
-</div>
-</div>
-
-<div class="project-card tilt-card reveal stagger-2">
 <div class="project-img" style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%);"><i class="fa-solid fa-robot"></i></div>
 <div class="project-content">
 <h3>AI Chatbot [Local LLM Integration]</h3>
@@ -426,8 +407,29 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 </div>
 </div>
 
+<div class="project-card tilt-card reveal stagger-2">
+<div class="project-img" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);"><i class="fas fa-bus"></i></div>
+<div class="project-content">
+<h3>Bristol Bus Stop Explorer</h3>
+<p class="project-date">Full-Stack Developer · Sep 2025 – Dec 2025</p>
+<p style="font-size:0.9rem;">Built and deployed on Vercel a full-stack Flask/SQLite application with optimised GeoJSON rendering, enabling commuters to locate any of 1,000+ Bristol bus stops on a single interactive map.</p>
+<div class="project-tech"><span class="tech-tag">Flask</span><span class="tech-tag">GeoJSON</span><span class="tech-tag">JavaScript</span><span class="tech-tag">Jinja2</span><span class="tech-tag">SQLite</span><span class="tech-tag">Vercel</span></div>
+<div class="project-features">
+<ul>
+<li>Derived 4 user requirements from commuter journey analysis (search, filter by bus authority, nearby stops, saved favourites) and implemented each to support a specific step of the journey.</li>
+<li>Developed a mobile-responsive frontend with map/table view toggling, search, and favourites, improving usability and navigation.</li>
+<li>Reviewed every GitHub Copilot and OpenAI Codex output manually before integrating it, maintaining code quality during AI-assisted prototyping.</li>
+</ul>
+</div>
+<div class="project-links">
+<a href="https://bus-stop-explorer.vercel.app/" target="_blank" rel="noopener" class="link-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+<a href="https://github.com/kyalsinhein/bus_stop_explorer" target="_blank" rel="noopener" class="link-btn"><i class="fab fa-github"></i> GitHub</a>
+</div>
+</div>
+</div>
+
 <!-- TODO: replace the Demo URL and GitHub repo name below with your real links -->
-<div class="project-card tilt-card reveal stagger-3">
+<div class="project-card tilt-card reveal stagger-1">
 <div class="project-img" style="background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);"><i class="fas fa-dumbbell"></i></div>
 <div class="project-content">
 <h3>Gym Management System</h3>
@@ -448,7 +450,7 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 </div>
 
 <!-- TODO: replace the Demo URL and GitHub repo name below with your real links -->
-<div class="project-card project-featured tilt-card reveal stagger-4">
+<div class="project-card tilt-card reveal stagger-2">
 <div class="project-img" style="background: linear-gradient(135deg, #8b5cf6 0%, #2563eb 100%);"><i class="fas fa-user-graduate"></i></div>
 <div class="project-content">
 <h3>Student Enrollment System [BSc Final-Year Project]</h3>
