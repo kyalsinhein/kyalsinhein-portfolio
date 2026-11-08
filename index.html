@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kyal Sin Hein | Junior Software & Data Engineer</title>
-<link rel="icon" href="../images/logo/logo.png" type="image/png">
+<link rel="icon" href="./images/logo/logo.png" type="image/png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -66,8 +66,6 @@ nav{position:fixed;top:0;left:0;width:100%;background-color:rgba(248,250,252,0.8
 .hero-image{text-align:center}
 .profile-container{width:100%;height:420px;background:linear-gradient(135deg,var(--primary) 0%,var(--accent2) 100%);border-radius:24px;display:flex;align-items:center;justify-content:center;color:white;box-shadow:0 30px 60px rgba(37,99,235,0.3);position:relative;overflow:hidden}
 .profile-container::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 30px,rgba(255,255,255,0.03) 30px,rgba(255,255,255,0.03) 60px)}
-.profile-content{text-align:center;padding:30px;z-index:1}
-.profile-icon{font-size:5rem;margin-bottom:20px;animation:float 3s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 .orbit-wrapper{position:relative;width:100%;height:420px}
 .orbit-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:2}
@@ -90,7 +88,7 @@ nav{position:fixed;top:0;left:0;width:100%;background-color:rgba(248,250,252,0.8
 .contact-link:hover{transform:translateY(-5px);box-shadow:0 12px 24px rgba(0,0,0,0.12);color:var(--primary)}
 .contact-link i{color:var(--primary)}
 .stats-strip{background:linear-gradient(135deg,var(--secondary) 0%,#1e293b 100%);padding:48px 0;overflow:hidden}
-.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;max-width:900px;margin:0 auto}
 .stat-item{text-align:center;padding:10px;border-right:1px solid rgba(255,255,255,0.08)}
 .stat-item:last-child{border-right:none}
 .stat-number{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;color:white;display:block}
@@ -117,18 +115,15 @@ nav{position:fixed;top:0;left:0;width:100%;background-color:rgba(248,250,252,0.8
 .education-card h3{color:var(--primary);margin-bottom:8px;font-size:1.2rem}
 .institution{color:var(--gray);margin-bottom:12px;font-weight:500;font-size:0.9rem}
 .date{display:inline-block;background:var(--gray-light);padding:4px 14px;border-radius:20px;font-size:0.85rem;color:var(--secondary);font-weight:500;font-family:'DM Mono',monospace}
-.in-progress-badge{background:var(--success);color:white;padding:4px 14px;border-radius:20px;font-size:0.8rem;font-weight:600;animation:pulse-badge 2s ease-in-out infinite}
-@keyframes pulse-badge{0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,0.4)}50%{box-shadow:0 0 0 6px rgba(16,185,129,0)}}
 .education-card ul{margin-top:14px}
 .education-card ul li{margin-bottom:8px;padding-left:22px;position:relative;color:var(--gray);font-size:0.88rem}
 .education-card ul li::before{content:'•';position:absolute;left:0;color:var(--primary);font-weight:bold}
 #projects{background:white}
-.projects-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:28px}
+.projects-container{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
 .project-card{background:white;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.06);transition:var(--transition);border:1px solid var(--gray-light);position:relative}
 .project-card:hover{transform:translateY(-10px);box-shadow:0 24px 48px rgba(0,0,0,0.12);border-color:transparent}
 .project-img{height:200px;display:flex;align-items:center;justify-content:center;color:white;font-size:3.5rem;position:relative;overflow:hidden}
 .project-img::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 20px,rgba(255,255,255,0.03) 20px,rgba(255,255,255,0.03) 40px)}
-.project-img-code{font-family:'DM Mono',monospace;font-size:0.7rem;opacity:0.3;position:absolute;bottom:10px;left:10px;text-align:left;line-height:1.4;pointer-events:none}
 .project-content{padding:24px}
 .project-content h3{margin-bottom:6px;color:var(--secondary);font-size:1.15rem}
 .project-date{font-style:italic;font-size:0.85rem;color:var(--gray);margin-bottom:10px;font-family:'DM Mono',monospace}
@@ -137,7 +132,7 @@ nav{position:fixed;top:0;left:0;width:100%;background-color:rgba(248,250,252,0.8
 .tech-tag:hover{background:var(--primary);color:white}
 .project-features ul li{margin-bottom:8px;padding-left:22px;position:relative;color:var(--gray);font-size:0.88rem}
 .project-features ul li::before{content:'✓';position:absolute;left:0;color:var(--success);font-weight:bold}
-.project-links{display:flex;gap:12px;margin-top:20px}
+.project-links{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
 .link-btn{display:flex;align-items:center;gap:7px;padding:8px 16px;background:var(--light);border-radius:7px;font-size:0.88rem;font-weight:600;color:var(--secondary);border:1px solid var(--gray-light);transition:var(--transition)}
 .link-btn:hover{background:var(--primary);color:white;border-color:var(--primary);transform:translateY(-2px)}
 .project-featured{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);border:1px solid var(--gray-light);transition:var(--transition)}
@@ -147,7 +142,7 @@ nav{position:fixed;top:0;left:0;width:100%;background-color:rgba(248,250,252,0.8
 #iot-projects{background:var(--light);padding:100px 0}
 #iot-projects h2::after{background:linear-gradient(90deg,var(--accent2),var(--accent))}
 .iot-project-detail{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;background:white;border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.08);padding:32px}
-.iot-carousel-container{position:relative;border-radius:12px;overflow:hidden;height:480px;box-shadow:0 8px 20px rgba(0,0,0,0.1)}
+.iot-carousel-container{position:relative;border-radius:12px;overflow:hidden;height:480px;box-shadow:0 8px 20px rgba(0,0,0,0.1);background:var(--gray-light)}
 .iot-carousel{width:100%;height:100%;position:relative}
 .carousel-slide{position:absolute;inset:0;opacity:0;transition:opacity 0.5s ease}
 .carousel-slide.active{opacity:1}
@@ -161,6 +156,9 @@ nav{position:fixed;top:0;left:0;width:100%;background-color:rgba(248,250,252,0.8
 .iot-project-info h3{color:var(--accent2);margin-bottom:14px}
 .arduino-tag{background:#00979d!important;color:white!important}
 .iot-tag{background:var(--accent2)!important;color:white!important}
+#awards{background:var(--light)}
+.award-card{transition:var(--transition)}
+.award-card:hover{transform:translateY(-6px);box-shadow:0 16px 32px rgba(0,0,0,0.1)!important}
 #contact{background:var(--secondary);text-align:center}
 #contact h2{color:white}
 #contact h2::after{left:50%;transform:translateX(-50%);background:linear-gradient(90deg,var(--accent),var(--primary))}
@@ -181,31 +179,31 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 .social-links a{width:46px;height:46px;background:rgba(255,255,255,0.07);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:var(--transition);font-size:1.1rem;border:1px solid rgba(255,255,255,0.08)}
 .social-links a:hover{background:var(--primary);transform:translateY(-4px);border-color:var(--primary)}
 .copyright{margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.07);width:100%;font-size:0.85rem;color:rgba(255,255,255,0.3)}
+.copyright p{color:rgba(255,255,255,0.3);margin-bottom:0}
 .glitch{position:relative}
 .glitch:hover::before,.glitch:hover::after{content:attr(data-text);position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#f0f9ff 0%,#e0f2fe 60%,#ede9fe 100%);-webkit-background-clip:text;background-clip:text}
 .glitch:hover::before{color:var(--accent);left:2px;animation:glitch1 0.4s steps(2) infinite}
 .glitch:hover::after{color:var(--accent2);left:-2px;animation:glitch2 0.4s steps(2) infinite}
 @keyframes glitch1{0%,100%{clip-path:inset(0 0 80% 0)}50%{clip-path:inset(30% 0 40% 0)}}
 @keyframes glitch2{0%,100%{clip-path:inset(60% 0 0 0)}50%{clip-path:inset(0 0 60% 0)}}
-.tilt-card{transform-style:preserve-3d;transition:transform 0.2s ease}
+/* Fix: tilt-card no longer overrides the reveal fade-in transition */
+.tilt-card{transform-style:preserve-3d}
+.reveal.tilt-card{transition:opacity 0.7s ease,transform 0.2s ease,box-shadow 0.35s ease,border-color 0.35s ease}
 #scroll-top{position:fixed;bottom:30px;right:30px;width:48px;height:48px;background:var(--primary);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:none;z-index:500;box-shadow:0 8px 20px rgba(37,99,235,0.35);opacity:0;pointer-events:none;transition:var(--transition);border:none;font-size:1.1rem}
 #scroll-top.visible{opacity:1;pointer-events:all}
 #scroll-top:hover{transform:translateY(-4px) scale(1.1)}
 .nav-links a.active{color:var(--primary)}
 .nav-links a.active::after{width:100%}
-@media(max-width:992px){.hero,.about-content,.iot-project-detail{grid-template-columns:1fr}.project-featured{grid-template-columns:1fr}.project-featured .project-img{min-height:200px}.stats-grid{grid-template-columns:repeat(2,1fr)}.stat-item:nth-child(2){border-right:none}.profile-container{height:360px}.orbit-wrapper{height:360px}}
-@media(max-width:768px){.mobile-menu-btn{display:block}.nav-links{position:fixed;top:75px;left:-100%;width:100%;flex-direction:column;background:white;padding:28px;box-shadow:0 10px 30px rgba(0,0,0,0.1);transition:var(--transition);z-index:999;gap:18px}.nav-links.active{left:0}.projects-container{grid-template-columns:1fr}.education-container{grid-template-columns:1fr}}
-@media(max-width:576px){section{padding:70px 0}.stats-grid{grid-template-columns:repeat(2,1fr)}.iot-carousel-container{height:280px}}
+@media(max-width:992px){.hero,.about-content,.iot-project-detail{grid-template-columns:1fr}.projects-container{grid-template-columns:1fr}.project-featured{grid-template-columns:1fr}.project-featured .project-img{min-height:200px}.stats-grid{grid-template-columns:repeat(3,1fr)}.profile-container{height:360px}.orbit-wrapper{height:360px}}
+@media(max-width:768px){.mobile-menu-btn{display:block}.nav-links{position:fixed;top:75px;left:-100%;width:100%;flex-direction:column;background:white;padding:28px;box-shadow:0 10px 30px rgba(0,0,0,0.1);transition:var(--transition);z-index:999;gap:18px}.nav-links.active{left:0}.education-container{grid-template-columns:1fr}.stat-label{font-size:0.7rem;letter-spacing:1px}}
+@media(max-width:576px){section{padding:70px 0}.iot-carousel-container{height:280px}.education-container{grid-template-columns:1fr}}
 @media (hover: none), (pointer: coarse), (max-width: 768px) {
-  #cursor,
-  #cursor-ring { display: none !important; }
-
-  body,
-  .btn,
-  .mobile-menu-btn,
-  .carousel-btn,
-  .dot,
-  #scroll-top { cursor: auto; }
+  #cursor,#cursor-ring{display:none!important}
+  body,.btn,.mobile-menu-btn,.carousel-btn,.dot,#scroll-top{cursor:auto}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}
+  html{scroll-behavior:auto}
 }
 </style>
 </head>
@@ -223,7 +221,7 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 <li><a href="#home">Home</a></li>
 <li><a href="#about">About</a></li>
 <li><a href="#education">Education</a></li>
-<li><a href="#projects">Software Project</a></li>
+<li><a href="#projects">Software Projects</a></li>
 <li><a href="#iot-projects">IoT Project</a></li>
 <li><a href="#awards">Awards</a></li>
 <li><a href="#contact">Contact</a></li>
@@ -245,7 +243,7 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 <a href="#contact" class="btn btn-outline">Let's Talk</a>
 </div>
 <div class="contact-links reveal stagger-5">
-<a href="https://github.com/kyalsinhein" target="_blank" class="contact-link"><i class="fab fa-github"></i><span>GitHub</span></a>
+<a href="https://github.com/kyalsinhein" target="_blank" rel="noopener" class="contact-link"><i class="fab fa-github"></i><span>GitHub</span></a>
 <div class="contact-link"><i class="fas fa-map-marker-alt"></i><span>Bristol, BS16 1AG</span></div>
 </div>
 </div>
@@ -268,9 +266,10 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 
 <div class="stats-strip">
 <div class="container">
-<div class="stats-grid" style="grid-template-columns:repeat(2,1fr);max-width:800px;margin:0 auto;">
-<div class="stat-item reveal stagger-1"><span class="stat-number" data-target="619"><span class="count">0</span></span><p class="stat-label">Cloud Findings Processed</p></div>
-<div class="stat-item reveal stagger-2"><span class="stat-number" data-target="1000"><span class="count">0</span>+</span><p class="stat-label">GeoJSON Records</p></div>
+<div class="stats-grid">
+<div class="stat-item reveal stagger-1"><span class="stat-number" data-target="619"><span class="count">0</span></span><p class="stat-label">Cloud Findings Screened</p></div>
+<div class="stat-item reveal stagger-2"><span class="stat-number" data-target="1000"><span class="count">0</span>+</span><p class="stat-label">Bus Stops Mapped</p></div>
+<div class="stat-item reveal stagger-3"><span class="stat-number" data-target="33"><span class="count">0</span></span><p class="stat-label">Days to Ship Gym App</p></div>
 </div>
 </div>
 </div>
@@ -294,8 +293,8 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 <div class="skill-category tilt-card reveal stagger-2"><h4><i class="fas fa-layer-group"></i> Frameworks & Libraries</h4><ul><li>Flask</li><li>Streamlit</li><li>Jinja2</li></ul></div>
 <div class="skill-category tilt-card reveal stagger-3"><h4><i class="fas fa-database"></i> Databases</h4><ul><li>MySQL</li><li>SQLite</li></ul></div>
 <div class="skill-category tilt-card reveal stagger-4"><h4><i class="fas fa-chart-line"></i> Data Engineering</h4><ul><li>Data Pipelines</li><li>ETL/ELT</li><li>Data Warehousing Concepts</li><li>API Integration</li><li>Data Analysis</li><li>Data Visualization</li></ul></div>
-<div class="skill-category tilt-card reveal stagger-5"><h4><i class="fas fa-tools"></i> Version Control & Tools</h4><ul><li>Git</li><li>GitHub</li><li>Bitbucket</li><li>CLI (Bash)</li><li>Power BI</li><li>Excel</li><li>Figma</li><li>GitHub Copilot</li><li>OpenAI Codex</li></ul></div>
-<div class="skill-category tilt-card reveal stagger-6"><h4><i class="fas fa-lightbulb"></i> Concepts</h4><ul><li>OOP</li><li>Data Structures & Algorithms</li><li>Agile/Scrum</li><li>SDLC</li><li>RESTful APIs</li><li>Generative AI</li><li>Cloud Computing</li><li>Cloud Security (CVSS v4.0)</li><li>Linux Fundamentals</li></ul></div>
+<div class="skill-category tilt-card reveal stagger-5"><h4><i class="fas fa-tools"></i> Version Control & Tools</h4><ul><li>Git</li><li>GitHub</li><li>Bitbucket</li><li>Vercel</li><li>CLI (Bash)</li><li>Power BI</li><li>Excel</li><li>Figma</li><li>GitHub Copilot</li><li>OpenAI Codex</li></ul></div>
+<div class="skill-category tilt-card reveal stagger-6"><h4><i class="fas fa-lightbulb"></i> Concepts</h4><ul><li>OOP</li><li>Data Structures & Algorithms</li><li>Agile/Scrum</li><li>Test Case Planning</li><li>Code Review</li><li>SDLC</li><li>RESTful APIs</li><li>Generative AI</li><li>Cloud Computing</li><li>Cloud Security (CVSS v4.0)</li><li>Linux Fundamentals</li></ul></div>
 <div class="skill-category tilt-card reveal stagger-7"><h4><i class="fas fa-language"></i> Languages</h4><ul><li>English (Professional Working Proficiency)</li><li>Burmese (Native)</li></ul></div>
 </div>
 </div>
@@ -308,9 +307,7 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 <h2 class="reveal">Education</h2>
 <div class="education-container">
 <div class="education-card tilt-card reveal stagger-1">
-<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:10px;">
-<span class="date">Sept 2025 – Sept 2026</span>
-</div>
+<div style="margin-bottom:16px;"><span class="date">Sept 2025 – Sept 2026</span></div>
 <h3>MSc Information Technology</h3>
 <p class="institution"><i class="fas fa-university" style="margin-right:6px;color:var(--primary);"></i>UWE, Bristol</p>
 <ul>
@@ -326,7 +323,7 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 </div>
 <div class="education-card tilt-card reveal stagger-2">
 <div style="margin-bottom:16px;"><span class="date">Jan 2024 – Dec 2024</span></div>
-<h3>BSc Computing</h3>
+<h3>BSc Computing (Top-Up)</h3>
 <p class="institution"><i class="fas fa-university" style="margin-right:6px;color:var(--primary);"></i>Edinburgh Napier University</p>
 <ul>
 <li>Advanced Web Technologies</li>
@@ -338,8 +335,8 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 </ul>
 </div>
 <div class="education-card tilt-card reveal stagger-3">
-<div style="margin-bottom:16px;"><span class="date">Dec 2020 – Sept 2023</span></div>
-<h3>HND Computing (Software Engineering)</h3>
+<div style="margin-bottom:16px;"><span class="date">Sept 2021 – Sept 2023</span></div>
+<h3>BTEC HND Computing (Software Engineering)</h3>
 <p class="institution"><i class="fas fa-university" style="margin-right:6px;color:var(--primary);"></i>Info Myanmar College</p>
 <ul>
 <li>Advanced Programming</li>
@@ -367,31 +364,52 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 <div class="project-img" style="background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);"><i class="fas fa-shield-halved"></i></div>
 <div class="project-content">
 <h3>Cloud Sentinel Remediation Engine [MSc Project]</h3>
-<p class="project-date">Developer · MSc Master's Project, UWE Bristol · 2026</p>
+<p class="project-date">Developer · MSc Master's Project, UWE Bristol · Sept 2025 – Sept 2026</p>
 <p style="font-size:0.9rem;">Built a human-in-the-loop pipeline that turns cloud misconfiguration findings from AWS, Azure and GCP into prioritised, review-ready remediation scripts.</p>
 <div class="project-tech">
-<span class="tech-tag">Python</span><span class="tech-tag">CVSS v4.0</span><span class="tech-tag">Streamlit</span><span class="tech-tag">AWS / Azure / GCP</span><span class="tech-tag">JSONL</span>
+<span class="tech-tag">Python</span><span class="tech-tag">CVSS v4.0</span><span class="tech-tag">Streamlit</span><span class="tech-tag">AWS / Azure / GCP</span><span class="tech-tag">JSONL</span><span class="tech-tag">Bash</span>
 </div>
 <div class="project-features">
 <ul>
-<li>Processed 619 cloud misconfiguration records through a five-stage pipeline (loader, CVSS v4.0 scorer, human approval, mapping engine, evaluator), flagging data-quality issues before scoring.</li>
-<li>Prioritised findings with CVSS v4.0 scores so reviewers handle the highest-risk issues first.</li>
-<li>Generated review-only CLI scripts from templates checked against official provider docs, with a manual-review fallback when no template matched. Nothing executes against a live environment.</li>
+<li>Screened 619 cloud misconfiguration findings with a Python validation pipeline, withholding 93 from scoring pending manual review so the remaining 526 were scored on verified data.</li>
+<li>Prioritised findings on a 0–10 severity scale across 12 vulnerability categories by mapping each to CVSS v4.0 base vectors (11 metrics) using the official FIRST.org tables.</li>
+<li>Produced review-only CLI remediation scripts for 3 cloud providers (AWS, Azure, GCP) from templates verified against provider documentation, with a human approval step and a manual-review fallback. Nothing executes against a live environment.</li>
 <li>Added an evaluator that audits script validity and estimates review-time savings, and deployed an online demo on Streamlit.</li>
 </ul>
 </div>
 <div class="project-links">
-<a href="https://cloudsentinelremediationengine-57tvbxmbeq4qlp5yvmp4gs.streamlit.app/" target="_blank" class="link-btn"><i class="fas fa-external-link-alt"></i> Streamlit</a>
-<a href="https://github.com/kyalsinhein/cloud_sentinel_remediation_engine" target="_blank" class="link-btn"><i class="fab fa-github"></i> GitHub</a>
+<a href="https://cloudsentinelremediationengine-57tvbxmbeq4qlp5yvmp4gs.streamlit.app/" target="_blank" rel="noopener" class="link-btn"><i class="fas fa-external-link-alt"></i> Streamlit</a>
+<a href="https://github.com/kyalsinhein/cloud_sentinel_remediation_engine" target="_blank" rel="noopener" class="link-btn"><i class="fab fa-github"></i> GitHub</a>
 </div>
 </div>
 </div>
 
 <div class="project-card tilt-card reveal stagger-1">
+<div class="project-img" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);"><i class="fas fa-bus"></i></div>
+<div class="project-content">
+<h3>Bristol Bus Stop Explorer</h3>
+<p class="project-date">Full-Stack Developer · Sep 2025 – Dec 2025</p>
+<p style="font-size:0.9rem;">Built and deployed on Vercel a full-stack Flask/SQLite application with optimised GeoJSON rendering, enabling commuters to locate any of 1,000+ Bristol bus stops on a single interactive map.</p>
+<div class="project-tech"><span class="tech-tag">Flask</span><span class="tech-tag">GeoJSON</span><span class="tech-tag">JavaScript</span><span class="tech-tag">Jinja2</span><span class="tech-tag">SQLite</span><span class="tech-tag">Vercel</span></div>
+<div class="project-features">
+<ul>
+<li>Derived 4 user requirements from commuter journey analysis (search, filter by bus authority, nearby stops, saved favourites) and implemented each to support a specific step of the journey.</li>
+<li>Developed a mobile-responsive frontend with map/table view toggling, search, and favourites, improving usability and navigation.</li>
+<li>Reviewed every GitHub Copilot and OpenAI Codex output manually before integrating it, maintaining code quality during AI-assisted prototyping.</li>
+</ul>
+</div>
+<div class="project-links">
+<a href="https://bus-stop-explorer.vercel.app/" target="_blank" rel="noopener" class="link-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+<a href="https://github.com/kyalsinhein/bus_stop_explorer" target="_blank" rel="noopener" class="link-btn"><i class="fab fa-github"></i> GitHub</a>
+</div>
+</div>
+</div>
+
+<div class="project-card tilt-card reveal stagger-2">
 <div class="project-img" style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%);"><i class="fa-solid fa-robot"></i></div>
 <div class="project-content">
 <h3>AI Chatbot [Local LLM Integration]</h3>
-<p class="project-date">Developer · Jan 2026 </p>
+<p class="project-date">Developer · Jan 2026</p>
 <p style="font-size:0.9rem;">Developed a Python-based chatbot integrating local LLMs (Llama and Mistral) via the LM Studio API, eliminating reliance on paid cloud services and enabling offline deployment.</p>
 <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">RESTful API</span><span class="tech-tag">LM Studio</span><span class="tech-tag">Llama/Mistral</span></div>
 <div class="project-features">
@@ -402,28 +420,51 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 </ul>
 </div>
 <div class="project-links">
-<a href="https://lnkd.in/p/eTTpmRtB" target="_blank" class="link-btn"><i class="fas fa-external-link-alt"></i> Demo</a>
-<a href="https://github.com/kyalsinhein/ai_chatbot" target="_blank" class="link-btn"><i class="fab fa-github"></i> GitHub</a>
+<a href="https://lnkd.in/p/eTTpmRtB" target="_blank" rel="noopener" class="link-btn"><i class="fas fa-external-link-alt"></i> Demo</a>
+<a href="https://github.com/kyalsinhein/ai_chatbot" target="_blank" rel="noopener" class="link-btn"><i class="fab fa-github"></i> GitHub</a>
 </div>
 </div>
 </div>
 
-<div class="project-card tilt-card reveal stagger-2">
-<div class="project-img" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);"><i class="fas fa-bus"></i></div>
+<!-- TODO: replace the Demo URL and GitHub repo name below with your real links -->
+<div class="project-card tilt-card reveal stagger-3">
+<div class="project-img" style="background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);"><i class="fas fa-dumbbell"></i></div>
 <div class="project-content">
-<h3>Bristol Bus Stop Explorer</h3>
-<p class="project-date">Full-Stack Developer · Sep 2025 – Dec 2025</p>
-<p>Built a Flask web application featuring a GeoJSON-based interactive map, enabling users to search for bus stops and find nearest stops efficiently using Open Data APIs.</p>
-<div class="project-tech"><span class="tech-tag">Flask</span><span class="tech-tag">GeoJSON</span><span class="tech-tag">JavaScript</span><span class="tech-tag">SQL</span><span class="tech-tag">SQLite</span><span class="tech-tag">Open Data APIs</span></div>
+<h3>Gym Management System</h3>
+<p class="project-date">Project Leader · Nov 2024 – Dec 2024</p>
+<p style="font-size:0.9rem;">Led a four-developer Agile team to deliver a Flask gym management application in 33 days, tracking every requirement against a written test case plan.</p>
+<div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Flask</span><span class="tech-tag">RESTful APIs</span><span class="tech-tag">SQLite</span><span class="tech-tag">HTML/CSS</span><span class="tech-tag">Git</span></div>
 <div class="project-features">
 <ul>
-<li>Optimised rendering and handling of 1,000+ GeoJSON records, ensuring smooth, low-latency map interactions for an enhanced user experience.</li>
-<li>Developed a mobile-responsive frontend with JavaScript and HTML, including map/table view toggling, search, and favourites functionality, improving usability and navigation.</li>
+<li>Reduced average query latency from 120 ms to 102 ms by refactoring database logic into optimised CRUD functions.</li>
+<li>Established Git workflows and peer code reviews that identified logic errors early and supported a stable, reliable release.</li>
 </ul>
 </div>
 <div class="project-links">
-<a href="https://bus-stop-explorer.vercel.app/" target="_blank" class="link-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-<a href="https://github.com/kyalsinhein/bus_stop_explorer" target="_blank" class="link-btn"><i class="fab fa-github"></i> GitHub</a>
+<a href="https://github.com/kyalsinhein" target="_blank" rel="noopener" class="link-btn"><i class="fas fa-external-link-alt"></i> Demo</a>
+<a href="https://github.com/kyalsinhein" target="_blank" rel="noopener" class="link-btn"><i class="fab fa-github"></i> GitHub</a>
+</div>
+</div>
+</div>
+
+<!-- TODO: replace the Demo URL and GitHub repo name below with your real links -->
+<div class="project-card project-featured tilt-card reveal stagger-4">
+<div class="project-img" style="background: linear-gradient(135deg, #8b5cf6 0%, #2563eb 100%);"><i class="fas fa-user-graduate"></i></div>
+<div class="project-content">
+<h3>Student Enrollment System [BSc Final-Year Project]</h3>
+<p class="project-date">Developer · Aug 2024 – Sept 2024</p>
+<p style="font-size:0.9rem;">Developed and deployed on Vercel a role-based enrollment system (Flask/SQLite, 5-table schema) with 30 routes serving 2 user roles: student and administrator.</p>
+<div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Flask</span><span class="tech-tag">SQLite</span><span class="tech-tag">Jinja2</span><span class="tech-tag">HTML/CSS</span><span class="tech-tag">Vercel</span></div>
+<div class="project-features">
+<ul>
+<li>Prevented timetable clashes with 2 server-side validation checks (duplicate enrollment and same-day class overlap) that compare each course's schedule days against the student's existing enrollments before saving.</li>
+<li>Enabled administrators to manage courses, students and schedules without direct database access, through create/edit/delete pages and a live-totals dashboard.</li>
+<li>Blocked deletion of courses that still have active enrollments to protect data integrity.</li>
+</ul>
+</div>
+<div class="project-links">
+<a href="https://github.com/kyalsinhein" target="_blank" rel="noopener" class="link-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+<a href="https://github.com/kyalsinhein" target="_blank" rel="noopener" class="link-btn"><i class="fab fa-github"></i> GitHub</a>
 </div>
 </div>
 </div>
@@ -443,8 +484,8 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 <div class="carousel-slide"><img src="./images/iot_project/image3.jpg" alt="LCD Display Interface"></div>
 <div class="carousel-slide"><img src="./images/iot_project/image4.jpg" alt="Final Prototype"></div>
 </div>
-<button class="carousel-btn prev-btn" onclick="changeIotSlide(-1)">❮</button>
-<button class="carousel-btn next-btn" onclick="changeIotSlide(1)">❯</button>
+<button class="carousel-btn prev-btn" onclick="changeIotSlide(-1)" aria-label="Previous slide">❮</button>
+<button class="carousel-btn next-btn" onclick="changeIotSlide(1)" aria-label="Next slide">❯</button>
 <div class="carousel-dots">
 <span class="dot active" onclick="goToIotSlide(0)"></span>
 <span class="dot" onclick="goToIotSlide(1)"></span>
@@ -465,7 +506,7 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 </ul>
 </div>
 <div class="project-links" style="margin-top:20px;">
-<a href="https://github.com/kyalsinhein/arduino_car_parking_system" target="_blank" class="link-btn"><i class="fab fa-github"></i> GitHub</a>
+<a href="https://github.com/kyalsinhein/arduino_car_parking_system" target="_blank" rel="noopener" class="link-btn"><i class="fab fa-github"></i> GitHub</a>
 </div>
 </div>
 </div>
@@ -477,13 +518,13 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 <div class="container">
 <h2 class="reveal">🏆 Awards & Certifications</h2>
 <div style="display: flex; flex-wrap: wrap; gap: 28px; justify-content: center; margin-top: 20px;">
-<div class="award-card" style="background: white; padding: 28px 32px; border-radius: 20px; text-align: center; min-width: 260px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); border-bottom: 3px solid var(--primary); transition: var(--transition);">
+<div class="award-card" style="background: white; padding: 28px 32px; border-radius: 20px; text-align: center; min-width: 260px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); border-bottom: 3px solid var(--primary);">
 <i class="fab fa-google" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 12px;"></i>
 <h3 style="margin-bottom: 8px;">Google AI Essentials</h3>
 <p style="color: var(--gray); margin-bottom: 8px;">Coursera · January 2026</p>
 <span class="tech-tag" style="background: var(--gray-light);">Generative AI</span>
 </div>
-<div class="award-card" style="background: white; padding: 28px 32px; border-radius: 20px; text-align: center; min-width: 260px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); border-bottom: 3px solid var(--primary); transition: var(--transition);">
+<div class="award-card" style="background: white; padding: 28px 32px; border-radius: 20px; text-align: center; min-width: 260px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); border-bottom: 3px solid var(--primary);">
 <i class="fas fa-graduation-cap" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 12px;"></i>
 <h3 style="margin-bottom: 8px;">UWE Asia Pacific Regional Scholarship</h3>
 <p style="color: var(--gray); margin-bottom: 8px;">University of the West of England · July 2025</p>
@@ -499,8 +540,8 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 <p class="reveal stagger-1">I'm currently open to new opportunities. Let's connect and discuss collaborations or just say hello!</p>
 <div class="contact-info">
 <div class="contact-item reveal stagger-1"><div class="contact-icon"><i class="fas fa-envelope"></i></div><div class="contact-details"><h4>Email</h4><a href="mailto:kyalsinhein6356@gmail.com">kyalsinhein6356@gmail.com</a></div></div>
-<div class="contact-item reveal stagger-2"><div class="contact-icon"><i class="fas fa-phone"></i></div><div class="contact-details"><h4>Phone</h4><a href="tel:+447557058400">+44 7557 058400</a></div></div>
-<div class="contact-item reveal stagger-3"><div class="contact-icon"><i class="fab fa-linkedin"></i></div><div class="contact-details"><h4>LinkedIn</h4><a href="https://www.linkedin.com/in/kyalsinhein/" target="_blank">Kyal Sin Hein</a></div></div>
+<div class="contact-item reveal stagger-2"><div class="contact-icon"><i class="fas fa-phone"></i></div><div class="contact-details"><h4>Phone</h4><a href="tel:+447557085400">+44 7557 085400</a></div></div>
+<div class="contact-item reveal stagger-3"><div class="contact-icon"><i class="fab fa-linkedin"></i></div><div class="contact-details"><h4>LinkedIn</h4><a href="https://www.linkedin.com/in/kyalsinhein/" target="_blank" rel="noopener">Kyal Sin Hein</a></div></div>
 </div>
 </div>
 </section>
@@ -511,13 +552,13 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 <div class="footer-logo">Kyal Sin Hein<span>.</span></div>
 <p class="footer-text">Junior Software and Data Engineer · Python · Flask · Full-Stack · Cloud & Data Engineering</p>
 <div class="social-links">
-<a href="https://www.linkedin.com/in/kyalsinhein/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-<a href="https://github.com/kyalsinhein" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+<a href="https://www.linkedin.com/in/kyalsinhein/" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+<a href="https://github.com/kyalsinhein" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a>
 <a href="mailto:kyalsinhein6356@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
 </div>
 <div class="copyright">
 <p>&copy; 2026 Kyal Sin Hein. All rights reserved.</p>
-<p style="margin-top:4px; font-size:0.78rem;">+44 7557 058400 · kyalsinhein6356@gmail.com</p>
+<p style="margin-top:4px; font-size:0.78rem;">+44 7557 085400 · kyalsinhein6356@gmail.com</p>
 </div>
 </div>
 </div>
@@ -566,13 +607,27 @@ setTimeout(typeLoop,deleting?55:90);
 typeLoop();
 
 const scrollBar=document.getElementById('scroll-bar');
-window.addEventListener('scroll',()=>{const pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;scrollBar.style.width=pct+'%'});
 const scrollTop=document.getElementById('scroll-top');
-window.addEventListener('scroll',()=>{scrollTop.classList.toggle('visible',window.scrollY>400)});
+const sections=document.querySelectorAll('section[id]');
+const navLinks=document.querySelectorAll('.nav-links a[href^="#"]');
+window.addEventListener('scroll',()=>{
+const max=document.documentElement.scrollHeight-window.innerHeight;
+scrollBar.style.width=(max>0?(window.scrollY/max)*100:0)+'%';
+scrollTop.classList.toggle('visible',window.scrollY>400);
+document.getElementById('navbar').style.padding=window.scrollY>50?'11px 0':'16px 0';
+let current='';
+sections.forEach(sec=>{if(window.scrollY>=sec.offsetTop-120)current=sec.id});
+navLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+current)});
+});
 scrollTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
+// Reveal on scroll. After the entrance finishes, clear the stagger delay so hover/tilt feels instant.
 const revealEls=document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}})},{threshold:0.12,rootMargin:'0px 0px -50px 0px'});
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){
+e.target.classList.add('visible');
+setTimeout(()=>{e.target.style.transitionDelay='0s'},1300);
+observer.unobserve(e.target);
+}})},{threshold:0.12,rootMargin:'0px 0px -50px 0px'});
 revealEls.forEach(el=>observer.observe(el));
 
 const counters=document.querySelectorAll('.stat-number .count');
@@ -587,42 +642,33 @@ counterObserver.unobserve(e.target);
 },{threshold:0.5});
 counters.forEach(c=>counterObserver.observe(c));
 
+if(!isTouch){
 document.querySelectorAll('.tilt-card').forEach(card=>{
 card.addEventListener('mousemove',e=>{
+if(!card.classList.contains('visible'))return;
 const rect=card.getBoundingClientRect();
 const x=(e.clientX-rect.left)/rect.width-0.5;
 const y=(e.clientY-rect.top)/rect.height-0.5;
 card.style.transform=`perspective(600px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateY(-6px)`;
 });
-card.addEventListener('mouseleave',()=>{card.style.transform='perspective(600px) rotateY(0deg) rotateX(0deg) translateY(0)'});
+card.addEventListener('mouseleave',()=>{card.style.transform=''});
 });
+}
 
-const sections=document.querySelectorAll('section[id]');
-const navLinks=document.querySelectorAll('.nav-links a[href^="#"]');
-window.addEventListener('scroll',()=>{
-const nav=document.getElementById('navbar');
-nav.style.padding=window.scrollY>50?'11px 0':'16px 0';
-let current='';
-sections.forEach(sec=>{if(window.scrollY>=sec.offsetTop-120)current=sec.id});
-navLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+current)});
-});
-
-document.querySelector('.mobile-menu-btn').addEventListener('click',()=>{document.querySelector('.nav-links').classList.toggle('active')});
-document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{document.querySelector('.nav-links').classList.remove('active')}));
+const mobileBtn=document.querySelector('.mobile-menu-btn');
+const navList=document.querySelector('.nav-links');
+mobileBtn.addEventListener('click',()=>{navList.classList.toggle('active')});
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
 a.addEventListener('click',e=>{
-e.preventDefault();
-const target=document.querySelector(a.getAttribute('href'));
-if(target)window.scrollTo({top:target.offsetTop-78,behavior:'smooth'});
+const href=a.getAttribute('href');
+if(!href||href==='#')return;
+const target=document.querySelector(href);
+if(target){e.preventDefault();window.scrollTo({top:target.offsetTop-78,behavior:'smooth'});navList.classList.remove('active')}
 });
 });
 
-let currentIotSlide=0,iotSlides,iotDots,iotInterval;
-function initIot(){
-iotSlides=document.querySelectorAll('#iotCarousel .carousel-slide');
-iotDots=document.querySelectorAll('.carousel-dots .dot');
-if(iotSlides.length)iotInterval=setInterval(()=>changeIotSlide(1),5000);
-}
+let currentIotSlide=0,iotSlides=[],iotDots=[],iotInterval;
+function startIot(){clearInterval(iotInterval);iotInterval=setInterval(()=>changeIotSlide(1),5000)}
 function showIotSlide(n){
 if(!iotSlides.length)return;
 iotSlides.forEach(s=>s.classList.remove('active'));
@@ -631,14 +677,18 @@ currentIotSlide=(n+iotSlides.length)%iotSlides.length;
 iotSlides[currentIotSlide].classList.add('active');
 iotDots[currentIotSlide].classList.add('active');
 }
-function changeIotSlide(dir){clearInterval(iotInterval);showIotSlide(currentIotSlide+dir);iotInterval=setInterval(()=>changeIotSlide(1),5000)}
-function goToIotSlide(n){clearInterval(iotInterval);showIotSlide(n);iotInterval=setInterval(()=>changeIotSlide(1),5000)}
-document.addEventListener('DOMContentLoaded',initIot);
+function changeIotSlide(dir){showIotSlide(currentIotSlide+dir);startIot()}
+function goToIotSlide(n){showIotSlide(n);startIot()}
+document.addEventListener('DOMContentLoaded',()=>{
+iotSlides=document.querySelectorAll('#iotCarousel .carousel-slide');
+iotDots=document.querySelectorAll('.carousel-dots .dot');
+if(iotSlides.length)startIot();
 const iotC=document.getElementById('iotCarousel');
 if(iotC){
 iotC.addEventListener('mouseenter',()=>clearInterval(iotInterval));
-iotC.addEventListener('mouseleave',()=>{iotInterval=setInterval(()=>changeIotSlide(1),5000)});
+iotC.addEventListener('mouseleave',startIot);
 }
+});
 </script>
 </body>
 </html>
