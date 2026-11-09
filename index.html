@@ -121,7 +121,6 @@ nav{position:fixed;top:0;left:0;width:100%;background-color:rgba(248,250,252,0.8
 #projects{background:white}
 .projects-container{display:grid;grid-template-columns:repeat(2,1fr);grid-auto-rows:1fr;align-items:stretch;gap:28px}
 .project-card{background:white;border-radius:14px;overflow:hidden;height:100%;box-shadow:0 4px 16px rgba(0,0,0,0.06);transition:var(--transition);border:1px solid var(--gray-light);position:relative}
-/* Subtle hover: small lift only, no 3D tilt */
 .project-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,0.10);border-color:transparent}
 .project-img{height:200px;display:flex;align-items:center;justify-content:center;color:white;font-size:3.5rem;position:relative;overflow:hidden}
 .project-img::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 20px,rgba(255,255,255,0.03) 20px,rgba(255,255,255,0.03) 40px)}
@@ -189,7 +188,6 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 .glitch:hover::after{color:var(--accent2);left:-2px;animation:glitch2 0.4s steps(2) infinite}
 @keyframes glitch1{0%,100%{clip-path:inset(0 0 80% 0)}50%{clip-path:inset(30% 0 40% 0)}}
 @keyframes glitch2{0%,100%{clip-path:inset(60% 0 0 0)}50%{clip-path:inset(0 0 60% 0)}}
-/* tilt-card no longer overrides the reveal fade-in transition */
 .tilt-card{transform-style:preserve-3d}
 .reveal.tilt-card{transition:opacity 0.7s ease,transform 0.2s ease,box-shadow 0.35s ease,border-color 0.35s ease}
 #scroll-top{position:fixed;bottom:30px;right:30px;width:48px;height:48px;background:var(--primary);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:none;z-index:500;box-shadow:0 8px 20px rgba(37,99,235,0.35);opacity:0;pointer-events:none;transition:var(--transition);border:none;font-size:1.1rem}
@@ -363,15 +361,11 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 <h2 class="reveal">Software Projects</h2>
 <div class="projects-container">
 
-<div class="project-card project-featured reveal">
-<div class="project-img" style="background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);"><i class="fas fa-shield-halved"></i></div>
-<div class="project-content">
-
 <div class="project-card reveal">
 <div class="project-img" style="background: linear-gradient(135deg, #0f172a 0%, #06b6d4 100%);"><i class="fas fa-heart-pulse"></i></div>
 <div class="project-content">
 <h3>PulseBoard: Real-Time Uptime Monitor</h3>
-<p class="project-date">October 2026 – Nov 2026</p>
+<p class="project-date">Oct 2026 – Nov 2026</p>
 <p style="font-size:0.9rem;">Built a self-hosted monitoring system that checks the health of web services, tracks their uptime and latency, and streams live results to a dashboard.</p>
 <div class="project-tech">
 <span class="tech-tag">Python</span><span class="tech-tag">FastAPI</span><span class="tech-tag">asyncio</span><span class="tech-tag">JavaScript</span><span class="tech-tag">SQLite</span><span class="tech-tag">Server-Sent Events</span><span class="tech-tag">Docker</span>
@@ -646,7 +640,6 @@ navLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+cu
 });
 scrollTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-// Reveal on scroll. After the entrance finishes, clear the stagger delay so hover feels instant.
 const revealEls=document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
 const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){
 e.target.classList.add('visible');
@@ -667,7 +660,6 @@ counterObserver.unobserve(e.target);
 },{threshold:0.5});
 counters.forEach(c=>counterObserver.observe(c));
 
-// Gentle tilt for Skills and Education cards only (project cards no longer use it)
 if(!isTouch){
 document.querySelectorAll('.tilt-card').forEach(card=>{
 card.addEventListener('mousemove',e=>{
