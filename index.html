@@ -52,12 +52,13 @@ nav{position:fixed;top:0;left:0;width:100%;background-color:rgba(248,250,252,0.8
 .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--primary),var(--accent));transition:width 0.3s ease}
 .nav-links a:hover::after{width:100%}
 .nav-links a:hover{color:var(--primary)}
+.nav-links a.active{color:var(--primary)}
+.nav-links a.active::after{width:100%}
 .mobile-menu-btn{display:none;font-size:1.5rem;cursor:none;color:var(--secondary)}
 #particles-canvas{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
 #home{background:linear-gradient(145deg,#f0f9ff 0%,#e0f2fe 60%,#ede9fe 100%);position:relative;overflow:hidden}
 .hero{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1}
 .hero-text h1{margin-bottom:8px;background:linear-gradient(135deg,var(--secondary) 30%,var(--primary) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-text h3{color:var(--primary);margin-bottom:20px;font-weight:500;font-size:1.2rem;font-family:'DM Mono',monospace}
 .typed-container{display:inline-flex;align-items:center;gap:4px}
 .typed-text{color:var(--primary);font-family:'DM Mono',monospace;font-size:1.15rem;font-weight:500}
 .cursor-blink{display:inline-block;width:2px;height:1.1em;background:var(--primary);animation:blink 1s step-end infinite;vertical-align:text-bottom}
@@ -118,32 +119,51 @@ nav{position:fixed;top:0;left:0;width:100%;background-color:rgba(248,250,252,0.8
 .education-card ul{margin-top:14px}
 .education-card ul li{margin-bottom:8px;padding-left:22px;position:relative;color:var(--gray);font-size:0.88rem}
 .education-card ul li::before{content:'•';position:absolute;left:0;color:var(--primary);font-weight:bold}
-#projects{background:white}
-.projects-container{display:grid;grid-template-columns:repeat(2,1fr);grid-auto-rows:1fr;align-items:stretch;gap:28px}
-.project-card{background:white;border-radius:14px;overflow:hidden;height:100%;box-shadow:0 4px 16px rgba(0,0,0,0.06);transition:var(--transition);border:1px solid var(--gray-light);position:relative}
-.project-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,0.10);border-color:transparent}
-.project-img{height:200px;display:flex;align-items:center;justify-content:center;color:white;font-size:3.5rem;position:relative;overflow:hidden}
+
+/* ── Shared project pieces ─────────────────────────────────── */
+.project-img{display:flex;align-items:center;justify-content:center;color:white;font-size:3rem;position:relative;overflow:hidden}
 .project-img::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 20px,rgba(255,255,255,0.03) 20px,rgba(255,255,255,0.03) 40px)}
-.project-card{display:flex;flex-direction:column}
-.project-content{padding:24px;flex:1;display:flex;flex-direction:column}
-.project-content .project-links{margin-top:auto;padding-top:20px}
-.project-content h3{margin-bottom:6px;color:var(--secondary);font-size:1.15rem}
 .project-date{font-style:italic;font-size:0.85rem;color:var(--gray);margin-bottom:10px;font-family:'DM Mono',monospace}
+.project-summary{font-size:0.92rem;margin-bottom:0}
 .project-tech{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
 .tech-tag{background:var(--gray-light);padding:4px 12px;border-radius:6px;font-size:0.78rem;font-weight:600;color:var(--secondary);font-family:'DM Mono',monospace;transition:var(--transition)}
 .tech-tag:hover{background:var(--primary);color:white}
 .project-features ul li{margin-bottom:8px;padding-left:22px;position:relative;color:var(--gray);font-size:0.88rem}
 .project-features ul li::before{content:'✓';position:absolute;left:0;color:var(--success);font-weight:bold}
-.project-links{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
+.project-links{display:flex;gap:12px;margin-top:auto;padding-top:20px;flex-wrap:wrap}
 .link-btn{display:flex;align-items:center;gap:7px;padding:8px 16px;background:var(--light);border-radius:7px;font-size:0.88rem;font-weight:600;color:var(--secondary);border:1px solid var(--gray-light);transition:var(--transition)}
 .link-btn:hover{background:var(--primary);color:white;border-color:var(--primary);transform:translateY(-2px)}
-.project-featured{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);border:1px solid var(--gray-light);transition:var(--transition)}
-.project-featured:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,0.10);border-color:transparent}
-.project-featured .project-img{height:100%;min-height:240px}
-.project-featured .project-content{padding:36px}
-#iot-projects{background:var(--light);padding:100px 0}
+.sub-heading{font-family:'DM Mono',monospace;font-size:0.85rem;letter-spacing:2px;text-transform:uppercase;color:var(--primary);margin:0 0 24px}
+
+/* ── Master's project (featured, full width) ───────────────── */
+#master-project{background:white}
+.project-featured{display:grid;grid-template-columns:1fr 1.4fr;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);border:1px solid var(--gray-light);background:white;transition:var(--transition)}
+.project-featured:hover{box-shadow:0 16px 32px rgba(0,0,0,0.10);border-color:transparent}
+.project-featured .project-img{min-height:340px;font-size:4.5rem}
+.project-featured .project-body{padding:36px;display:flex;flex-direction:column}
+.project-featured h3{margin-bottom:6px;color:var(--secondary);font-size:1.6rem}
+.project-featured .project-summary{font-size:1rem}
+.key-results{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0 4px}
+.key-result{background:var(--light);border-radius:10px;padding:14px 12px;text-align:center;border:1px solid var(--gray-light)}
+.key-result strong{display:block;font-family:'Space Grotesk',sans-serif;font-size:1.35rem;color:var(--primary);line-height:1.2}
+.key-result span{font-size:0.75rem;color:var(--gray);text-transform:uppercase;letter-spacing:0.8px}
+.project-featured .project-features{margin-top:18px}
+
+/* ── Other projects (uniform cards) ────────────────────────── */
+#projects{background:var(--light)}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;align-items:stretch}
+.project-card{background:white;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.06);transition:var(--transition);border:1px solid var(--gray-light);display:flex;flex-direction:column}
+.project-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,0.10);border-color:transparent}
+.project-card .project-img{height:150px;font-size:2.6rem}
+.project-card .project-body{padding:24px;flex:1;display:flex;flex-direction:column}
+.project-card h3{margin-bottom:6px;color:var(--secondary);font-size:1.1rem;min-height:2.6em}
+.project-card .project-summary{min-height:5.6em}
+.project-card .project-tech{min-height:3.2em}
+.project-card .project-features{flex:1}
+
+#iot-projects{background:white;padding:100px 0}
 #iot-projects h2::after{background:linear-gradient(90deg,var(--accent2),var(--accent))}
-.iot-project-detail{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;background:white;border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.08);padding:32px}
+.iot-project-detail{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;background:white;border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.08);padding:32px;border:1px solid var(--gray-light)}
 .iot-carousel-container{position:relative;border-radius:12px;overflow:hidden;height:480px;box-shadow:0 8px 20px rgba(0,0,0,0.1);background:var(--gray-light)}
 .iot-carousel{width:100%;height:100%;position:relative}
 .carousel-slide{position:absolute;inset:0;opacity:0;transition:opacity 0.5s ease}
@@ -194,10 +214,9 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 #scroll-top{position:fixed;bottom:30px;right:30px;width:48px;height:48px;background:var(--primary);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:none;z-index:500;box-shadow:0 8px 20px rgba(37,99,235,0.35);opacity:0;pointer-events:none;transition:var(--transition);border:none;font-size:1.1rem}
 #scroll-top.visible{opacity:1;pointer-events:all}
 #scroll-top:hover{transform:translateY(-4px) scale(1.1)}
-.nav-links a.active{color:var(--primary)}
-.nav-links a.active::after{width:100%}
-@media(max-width:992px){.hero,.about-content,.iot-project-detail{grid-template-columns:1fr}.projects-container{grid-template-columns:1fr}.project-featured{grid-template-columns:1fr}.project-featured .project-img{min-height:200px}.stats-grid{grid-template-columns:repeat(2,1fr)}.profile-container{height:360px}.orbit-wrapper{height:360px}}
-@media(max-width:768px){.mobile-menu-btn{display:block}.nav-links{position:fixed;top:75px;left:-100%;width:100%;flex-direction:column;background:white;padding:28px;box-shadow:0 10px 30px rgba(0,0,0,0.1);transition:var(--transition);z-index:999;gap:18px}.nav-links.active{left:0}.education-container{grid-template-columns:1fr}.stat-label{font-size:0.7rem;letter-spacing:1px}}
+@media(max-width:992px){.hero,.about-content,.iot-project-detail{grid-template-columns:1fr}.projects-grid{grid-template-columns:repeat(2,1fr)}.project-featured{grid-template-columns:1fr}.project-featured .project-img{min-height:220px}.stats-grid{grid-template-columns:repeat(2,1fr)}.profile-container{height:360px}.orbit-wrapper{height:360px}}
+@media(max-width:768px){.mobile-menu-btn{display:block}.nav-links{position:fixed;top:75px;left:-100%;width:100%;flex-direction:column;background:white;padding:28px;box-shadow:0 10px 30px rgba(0,0,0,0.1);transition:var(--transition);z-index:999;gap:18px}.nav-links.active{left:0}.education-container{grid-template-columns:1fr}.stat-label{font-size:0.7rem;letter-spacing:1px}.key-results{grid-template-columns:1fr}}
+@media(max-width:600px){.projects-grid{grid-template-columns:1fr}}
 @media(max-width:576px){section{padding:70px 0}.iot-carousel-container{height:280px}.education-container{grid-template-columns:1fr}}
 @media (hover: none), (pointer: coarse), (max-width: 768px) {
   #cursor,#cursor-ring{display:none!important}
@@ -223,7 +242,8 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 <li><a href="#home">Home</a></li>
 <li><a href="#about">About</a></li>
 <li><a href="#education">Education</a></li>
-<li><a href="#projects">Software Projects</a></li>
+<li><a href="#master-project">Master's Project</a></li>
+<li><a href="#projects">Other Projects</a></li>
 <li><a href="#iot-projects">IoT Project</a></li>
 <li><a href="#awards">Awards</a></li>
 <li><a href="#contact">Contact</a></li>
@@ -241,7 +261,7 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 <div class="typed-container reveal stagger-2"><span class="typed-text" id="typed-el"></span><span class="cursor-blink"></span></div>
 <p class="reveal stagger-3" style="margin-top:16px;">Junior Software Engineer skilled in Python, Flask, SQL, and JavaScript, with experience building RESTful APIs and database-driven applications. Recently completed an MSc in Information Technology, with a master's project on cloud security remediation. Familiar with Agile practices and collaborative development, and building maintainable software.</p>
 <div style="display:flex; gap:14px; flex-wrap:wrap;" class="reveal stagger-4">
-<a href="#projects" class="btn"><span>View Projects</span></a>
+<a href="#master-project" class="btn"><span>View Master's Project</span></a>
 <a href="#contact" class="btn btn-outline">Let's Talk</a>
 </div>
 <div class="contact-links reveal stagger-5">
@@ -357,25 +377,58 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 </div>
 </section>
 
-<section id="projects">
+<!-- ═══════════════ MASTER'S PROJECT ═══════════════ -->
+<section id="master-project">
 <div class="container">
-<h2 class="reveal">Software Projects</h2>
-<div class="projects-container">
-
-<div class="project-card reveal">
-<div class="project-img" style="background: linear-gradient(135deg, #0f172a 0%, #06b6d4 100%);"><i class="fas fa-heart-pulse"></i></div>
-<div class="project-content">
-<h3>PulseBoard: Real-Time Uptime Monitor</h3>
-<p class="project-date">Oct 2026 – Present</p>
-<p style="font-size:0.9rem;">Built a self-hosted monitoring system that checks the health of web services, tracks their uptime and latency, and streams live results to a dashboard.</p>
+<h2 class="reveal">Master's Project</h2>
+<div class="project-featured reveal">
+<div class="project-img" style="background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);"><i class="fas fa-shield-halved"></i></div>
+<div class="project-body">
+<h3>Cloud Sentinel Remediation Engine</h3>
+<p class="project-date">MSc Information Technology · CSCT Master Project · Sept 2025 – Sept 2026</p>
+<p class="project-summary">A human-in-the-loop pipeline that turns cloud misconfiguration findings from AWS, Azure and GCP into prioritised, review-ready remediation scripts. Nothing executes against a live environment; a person reviews and approves every script before it is used.</p>
+<div class="key-results">
+<div class="key-result"><strong>619</strong><span>Findings scored</span></div>
+<div class="key-result"><strong>100%</strong><span>Structural audit pass</span></div>
+<div class="key-result"><strong>89.2%</strong><span>Net effort reduction</span></div>
+</div>
 <div class="project-tech">
-<span class="tech-tag">Python</span><span class="tech-tag">FastAPI</span><span class="tech-tag">asyncio</span><span class="tech-tag">JavaScript</span><span class="tech-tag">SQLite</span><span class="tech-tag">Server-Sent Events</span><span class="tech-tag">Docker</span>
+<span class="tech-tag">Python</span><span class="tech-tag">CVSS v4.0</span><span class="tech-tag">Streamlit</span><span class="tech-tag">AWS / Azure / GCP</span><span class="tech-tag">JSONL</span><span class="tech-tag">Bash</span>
 </div>
 <div class="project-features">
 <ul>
-<li>Built an async FastAPI service that health-checks endpoints concurrently every 10 seconds, tracking 24-hour uptime and p50/p95 latency per service in SQLite.</li>
-<li>Streamed live results to a JavaScript dashboard over Server-Sent Events, with automatic incident logging when a service goes down or recovers.</li>
-<li>Containerised with Docker and added a REST API to add and remove monitored services at runtime.</li>
+<li>Scored each finding on CVSS v4.0 base vectors (11 metrics) using the official FIRST.org macrovector tables, and prioritised findings across 12 vulnerability categories.</li>
+<li>Generated review-only CLI remediation scripts from a template library, with a manual-review fallback when no template matches.</li>
+<li>Added an evaluator that audits script structure and estimates review-time savings, including human review time, and deployed an online demo on Streamlit.</li>
+</ul>
+</div>
+<div class="project-links">
+<a href="https://cloudsentinelremediationengine-57tvbxmbeq4qlp5yvmp4gs.streamlit.app/" target="_blank" rel="noopener" class="link-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+<a href="https://github.com/kyalsinhein/cloud_sentinel_remediation_engine" target="_blank" rel="noopener" class="link-btn"><i class="fab fa-github"></i> GitHub</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ═══════════════ OTHER PROJECTS ═══════════════ -->
+<section id="projects">
+<div class="container">
+<h2 class="reveal">Other Projects</h2>
+<div class="projects-grid">
+
+<div class="project-card reveal">
+<div class="project-img" style="background: linear-gradient(135deg, #0f172a 0%, #06b6d4 100%);"><i class="fas fa-heart-pulse"></i></div>
+<div class="project-body">
+<h3>PulseBoard: Real-Time Uptime Monitor</h3>
+<p class="project-date">Oct 2026 – Present</p>
+<p class="project-summary">A self-hosted monitor that checks the health of web services and streams uptime and latency results to a live dashboard.</p>
+<div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">FastAPI</span><span class="tech-tag">asyncio</span><span class="tech-tag">JavaScript</span><span class="tech-tag">SQLite</span><span class="tech-tag">SSE</span><span class="tech-tag">Docker</span></div>
+<div class="project-features">
+<ul>
+<li>Async FastAPI service health-checks endpoints every 10 seconds, tracking 24-hour uptime and p50/p95 latency in SQLite.</li>
+<li>Streams live results to a JavaScript dashboard over Server-Sent Events, with automatic incident logging.</li>
+<li>Containerised with Docker, with a REST API to add and remove monitored services at runtime.</li>
 </ul>
 </div>
 <div class="project-links">
@@ -386,41 +439,17 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 </div>
 
 <div class="project-card reveal stagger-1">
-<div class="project-img" style="background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);"><i class="fas fa-shield-halved"></i></div>
-<div class="project-content">
-<h3>Cloud Sentinel Remediation Engine [MSc Project]</h3>
-<p class="project-date">Sept 2025 – Sept 2026</p>
-<p style="font-size:0.9rem;">Built a human-in-the-loop pipeline that turns cloud misconfiguration findings from AWS, Azure and GCP into prioritised, review-ready remediation scripts.</p>
-<div class="project-tech">
-<span class="tech-tag">Python</span><span class="tech-tag">CVSS v4.0</span><span class="tech-tag">Streamlit</span><span class="tech-tag">AWS / Azure / GCP</span><span class="tech-tag">JSONL</span><span class="tech-tag">Bash</span>
-</div>
-<div class="project-features">
-<ul>
-<li>Screened 619 cloud misconfiguration findings with a Python validation pipeline, withholding 93 from scoring pending manual review so the remaining 526 were scored on verified data.</li>
-<li>Prioritised findings on a 0–10 severity scale across 12 vulnerability categories by mapping each to CVSS v4.0 base vectors (11 metrics) using the official FIRST.org tables.</li>
-<li>Produced review-only CLI remediation scripts for 3 cloud providers (AWS, Azure, GCP) from templates verified against provider documentation, with a human approval step and a manual-review fallback. Nothing executes against a live environment.</li>
-<li>Added an evaluator that audits script validity and estimates review-time savings, and deployed an online demo on Streamlit.</li>
-</ul>
-</div>
-<div class="project-links">
-<a href="https://cloudsentinelremediationengine-57tvbxmbeq4qlp5yvmp4gs.streamlit.app/" target="_blank" rel="noopener" class="link-btn"><i class="fas fa-external-link-alt"></i> Streamlit</a>
-<a href="https://github.com/kyalsinhein/cloud_sentinel_remediation_engine" target="_blank" rel="noopener" class="link-btn"><i class="fab fa-github"></i> GitHub</a>
-</div>
-</div>
-</div>
-
-<div class="project-card reveal stagger-1">
 <div class="project-img" style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%);"><i class="fa-solid fa-robot"></i></div>
-<div class="project-content">
+<div class="project-body">
 <h3>AI Chatbot [Local LLM Integration]</h3>
 <p class="project-date">Jan 2026</p>
-<p style="font-size:0.9rem;">Developed a Python-based chatbot integrating local LLMs (Llama and Mistral) via the LM Studio API, eliminating reliance on paid cloud services and enabling offline deployment.</p>
-<div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">RESTful API</span><span class="tech-tag">LM Studio</span><span class="tech-tag">Llama/Mistral</span></div>
+<p class="project-summary">A Python chatbot that runs local LLMs (Llama and Mistral) through the LM Studio API, so it works offline with no per-request cloud cost.</p>
+<div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">REST API</span><span class="tech-tag">LM Studio</span><span class="tech-tag">Llama/Mistral</span></div>
 <div class="project-features">
 <ul>
-<li>Designed a modular SimpleChat class to standardise REST API communication and keep the code reusable.</li>
-<li>Implemented exception handling and session management so server errors and an unreachable server are handled cleanly.</li>
-<li>Runs inference entirely on the local machine, so prompts stay local and there are no per-request cloud costs.</li>
+<li>Modular SimpleChat class standardises REST API communication and keeps the code reusable.</li>
+<li>Exception handling and session management cover server errors and an unreachable server.</li>
+<li>Inference runs entirely on the local machine, so prompts never leave it.</li>
 </ul>
 </div>
 <div class="project-links">
@@ -432,16 +461,16 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 
 <div class="project-card reveal stagger-2">
 <div class="project-img" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);"><i class="fas fa-bus"></i></div>
-<div class="project-content">
+<div class="project-body">
 <h3>Bristol Bus Stop Explorer</h3>
 <p class="project-date">Sep 2025 – Dec 2025</p>
-<p style="font-size:0.9rem;">Built and deployed on Vercel a full-stack Flask/SQLite application with optimised GeoJSON rendering, enabling commuters to locate any of 1,000+ Bristol bus stops on a single interactive map.</p>
+<p class="project-summary">A full-stack Flask and SQLite app with GeoJSON rendering, letting commuters find any of 1,000+ Bristol bus stops on one map.</p>
 <div class="project-tech"><span class="tech-tag">Flask</span><span class="tech-tag">GeoJSON</span><span class="tech-tag">JavaScript</span><span class="tech-tag">Jinja2</span><span class="tech-tag">SQLite</span><span class="tech-tag">Vercel</span></div>
 <div class="project-features">
 <ul>
-<li>Derived 4 user requirements from commuter journey analysis (search, filter by bus authority, nearby stops, saved favourites) and implemented each to support a specific step of the journey.</li>
-<li>Developed a mobile-responsive frontend with map/table view toggling, search, and favourites, improving usability and navigation.</li>
-<li>Reviewed and tested all GitHub Copilot and OpenAI Codex output before integrating it, maintaining code quality during AI-assisted prototyping.</li>
+<li>Derived four user requirements from commuter journey analysis and implemented each one.</li>
+<li>Mobile-responsive frontend with map and table views, search, and saved favourites.</li>
+<li>Reviewed and tested all GitHub Copilot and OpenAI Codex output before integrating it.</li>
 </ul>
 </div>
 <div class="project-links">
@@ -453,15 +482,16 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 
 <div class="project-card reveal stagger-1">
 <div class="project-img" style="background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);"><i class="fas fa-dumbbell"></i></div>
-<div class="project-content">
-<h3>Gym Management System (Project Leader)</h3>
+<div class="project-body">
+<h3>Gym Management System</h3>
 <p class="project-date">Nov 2024 – Dec 2024</p>
-<p style="font-size:0.9rem;">Led a four-developer Agile team to deliver a Flask gym management application in 33 days, tracking every requirement against a written test case plan.</p>
-<div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Flask</span><span class="tech-tag">RESTful APIs</span><span class="tech-tag">SQLite</span><span class="tech-tag">HTML/CSS</span><span class="tech-tag">Git</span></div>
+<p class="project-summary">Flask gym management application delivered in 33 days by a four-developer Agile team, which I led as project leader.</p>
+<div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Flask</span><span class="tech-tag">REST APIs</span><span class="tech-tag">SQLite</span><span class="tech-tag">HTML/CSS</span><span class="tech-tag">Git</span></div>
 <div class="project-features">
 <ul>
-<li>Improved database performance by refactoring query logic into reusable, optimised CRUD functions.</li>
-<li>Established Git workflows and peer code reviews that identified logic errors early and supported a stable, reliable release.</li>
+<li>Led the team and tracked every requirement against a written test case plan.</li>
+<li>Refactored query logic into reusable, optimised CRUD functions to improve database performance.</li>
+<li>Set up Git workflows and peer code reviews that caught logic errors early.</li>
 </ul>
 </div>
 <div class="project-links">
@@ -472,16 +502,16 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 
 <div class="project-card reveal stagger-2">
 <div class="project-img" style="background: linear-gradient(135deg, #8b5cf6 0%, #2563eb 100%);"><i class="fas fa-user-graduate"></i></div>
-<div class="project-content">
+<div class="project-body">
 <h3>Student Enrollment System</h3>
 <p class="project-date">Aug 2024 – Sept 2024</p>
-<p style="font-size:0.9rem;">Developed and deployed on Vercel a role-based enrollment system (Flask/SQLite, 5-table schema) with 30 routes serving 2 user roles: student and administrator.</p>
+<p class="project-summary">Role-based enrollment system with a five-table schema and 30 routes, serving student and administrator users.</p>
 <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Flask</span><span class="tech-tag">SQLite</span><span class="tech-tag">Jinja2</span><span class="tech-tag">HTML/CSS</span><span class="tech-tag">Vercel</span></div>
 <div class="project-features">
 <ul>
-<li>Prevented timetable clashes with 2 server-side validation checks (duplicate enrollment and same-day class overlap) that compare each course's schedule days against the student's existing enrollments before saving.</li>
-<li>Enabled administrators to manage courses, students and schedules without direct database access, through create/edit/delete pages and a live-totals dashboard.</li>
-<li>Blocked deletion of courses that still have active enrollments to protect data integrity.</li>
+<li>Two server-side checks block duplicate enrolments and same-day class overlaps before saving.</li>
+<li>Administrators manage courses, students and schedules through create, edit and delete pages with a live dashboard.</li>
+<li>Deletion of courses with active enrolments is blocked to protect data integrity.</li>
 </ul>
 </div>
 <div class="project-links">
