@@ -605,7 +605,7 @@ if(dist<120){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineT
 function animateParticles(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.update();p.draw()});drawLines();requestAnimationFrame(animateParticles)}
 animateParticles();
 
-const phrases=['Junior Software & Data Engineer','Python • Flask • JavaScript','SQL • ETL/ELT • Power BI','Agile Full-Stack Development','Data Cleaning & Visualization'];
+const phrases=['Junior Software Engineer','Python • Flask • JavaScript','SQL • ETL/ELT • Power BI','Agile Full-Stack Development'];
 let pIdx=0,cIdx=0,deleting=false;
 const typedEl=document.getElementById('typed-el');
 function typeLoop(){
