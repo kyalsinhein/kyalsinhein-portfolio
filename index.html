@@ -145,9 +145,17 @@ nav{position:fixed;top:0;left:0;width:100%;background-color:rgba(248,250,252,0.8
 .filter-btn:hover{border-color:var(--primary);color:var(--primary)}
 .filter-btn.active{background:var(--primary);border-color:var(--primary);color:white}
 .project-card.hidden{display:none}
+.project-card .project-features ul li:nth-child(n+2){display:none}
+.project-card.expanded .project-features ul li:nth-child(n+2){display:list-item}
+.see-more-btn{align-self:flex-start;margin-top:10px;background:none;border:none;padding:0;font-family:'Inter',sans-serif;font-weight:600;font-size:0.88rem;color:var(--primary);cursor:none}
+.see-more-btn:hover{text-decoration:underline}
 .project-card.reveal-left,.project-card.reveal-right{transition:opacity 0.9s ease,transform 0.9s cubic-bezier(0.22,1,0.36,1)}
 .project-card.reveal-left.visible,.project-card.reveal-right.visible{transition:opacity 0.9s ease,transform 0.9s cubic-bezier(0.22,1,0.36,1),box-shadow 0.35s ease,border-color 0.35s ease}
 .project-card.reveal-left.visible:hover,.project-card.reveal-right.visible:hover{transition:var(--transition)}
+@keyframes slideFromLeft{from{opacity:0;transform:translateX(-60px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slideFromRight{from{opacity:0;transform:translateX(60px)}to{opacity:1;transform:translateX(0)}}
+.project-card.anim-in.reveal-left{animation:slideFromLeft 0.8s cubic-bezier(0.22,1,0.36,1) backwards}
+.project-card.anim-in.reveal-right{animation:slideFromRight 0.8s cubic-bezier(0.22,1,0.36,1) backwards}
 .project-card.reveal-left,.project-card.reveal-right{transition:opacity 1.1s cubic-bezier(0.22,1,0.36,1),transform 1.1s cubic-bezier(0.22,1,0.36,1),box-shadow 0.35s ease,border-color 0.35s ease}
 
 /* ── Other projects (uniform cards) ────────────────────────── */
@@ -157,10 +165,9 @@ nav{position:fixed;top:0;left:0;width:100%;background-color:rgba(248,250,252,0.8
 .project-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,0.10);border-color:transparent}
 .project-card .project-img{height:150px;font-size:2.6rem}
 .project-card .project-body{padding:24px;flex:1;display:flex;flex-direction:column}
-.project-card h3{margin-bottom:6px;color:var(--secondary);font-size:1.1rem;min-height:2.6em}
-.project-card .project-summary{min-height:5.6em}
-.project-card .project-tech{min-height:3.2em}
-.project-card .project-features{flex:1}
+.project-card h3{margin-bottom:6px;color:var(--secondary);font-size:1.1rem}
+.project-card .project-summary{margin-bottom:0}
+.project-card .project-tech{margin:12px 0}
 
 #iot-projects{background:white;padding:100px 0}
 #iot-projects h2::after{background:linear-gradient(90deg,var(--accent2),var(--accent))}
@@ -394,13 +401,13 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 <h3>Cloud Sentinel Remediation Engine [Master's Project]</h3>
 <p class="project-org">UWE Bristol</p>
 <p class="project-date">Sept 2025 – Sept 2026</p>
-<p class="project-summary">A human-in-the-loop pipeline that turns cloud misconfiguration findings from AWS, Azure and GCP into prioritised, review-ready remediation scripts. 619 findings scored, 100% structural audit pass and an 89.2% net effort reduction.</p>
+<p class="project-summary">Human-in-the-loop pipeline that turns cloud misconfiguration findings from AWS, Azure and GCP into review-ready remediation scripts.</p>
 <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">CVSS v4.0</span><span class="tech-tag">Streamlit</span><span class="tech-tag">AWS / Azure / GCP</span><span class="tech-tag">JSONL</span><span class="tech-tag">Bash</span></div>
 <div class="project-features">
 <ul>
-<li>Scored each finding on CVSS v4.0 base vectors (11 metrics) using the official FIRST.org macrovector tables, across 12 vulnerability categories.</li>
-<li>Generated review-only CLI remediation scripts from a template library, with a manual-review fallback when no template matches.</li>
-<li>Added an evaluator that audits script structure and estimates review-time savings, and deployed an online demo on Streamlit.</li>
+<li>Scored 619 findings on CVSS v4.0 base vectors across 12 vulnerability categories.</li>
+<li>Generated review-only remediation scripts from a template library, with manual review as fallback.</li>
+<li>Added an evaluator for script structure and review-time savings (89.2% net reduction), deployed as a Streamlit demo.</li>
 </ul>
 </div>
 <div class="project-links">
@@ -416,13 +423,13 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 <h3>PulseBoard: Real-Time Uptime Monitor</h3>
 <p class="project-org">Personal Project</p>
 <p class="project-date">Oct 2026 – Present</p>
-<p class="project-summary">A self-hosted monitor that checks the health of web services and streams uptime and latency results to a live dashboard.</p>
+<p class="project-summary">Self-hosted monitor that checks web service health and streams uptime and latency to a live dashboard.</p>
 <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">FastAPI</span><span class="tech-tag">asyncio</span><span class="tech-tag">JavaScript</span><span class="tech-tag">SQLite</span><span class="tech-tag">SSE</span><span class="tech-tag">Docker</span></div>
 <div class="project-features">
 <ul>
-<li>Async FastAPI service health-checks endpoints every 10 seconds, tracking 24-hour uptime and p50/p95 latency in SQLite.</li>
-<li>Streams live results to a JavaScript dashboard over Server-Sent Events, with automatic incident logging.</li>
-<li>Containerised with Docker, with a REST API to add and remove monitored services at runtime.</li>
+<li>Async FastAPI health checks every 10 seconds, with 24-hour uptime and p50/p95 latency in SQLite.</li>
+<li>Live dashboard over Server-Sent Events, with automatic incident logging.</li>
+<li>Dockerised, with a REST API to add or remove services at runtime.</li>
 </ul>
 </div>
 <div class="project-links">
@@ -438,13 +445,13 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 <h3>AI Chatbot [Local LLM Integration]</h3>
 <p class="project-org">Personal Project</p>
 <p class="project-date">Jan 2026 – Present</p>
-<p class="project-summary">A Python chatbot that runs local LLMs (Llama and Mistral) through the LM Studio API, so it works offline with no per-request cloud cost.</p>
+<p class="project-summary">Python chatbot running local LLMs (Llama, Mistral) through LM Studio, working offline with no cloud cost.</p>
 <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">REST API</span><span class="tech-tag">LM Studio</span><span class="tech-tag">Llama/Mistral</span></div>
 <div class="project-features">
 <ul>
-<li>Modular SimpleChat class standardises REST API communication and keeps the code reusable.</li>
-<li>Exception handling and session management cover server errors and an unreachable server.</li>
-<li>Inference runs entirely on the local machine, so prompts never leave it.</li>
+<li>Modular SimpleChat class for reusable REST API communication.</li>
+<li>Handles server errors and unreachable servers with session management.</li>
+<li>Inference runs locally, so prompts never leave the machine.</li>
 </ul>
 </div>
 <div class="project-links">
@@ -460,13 +467,13 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 <h3>Bristol Bus Stop Explorer</h3>
 <p class="project-org">UWE Bristol</p>
 <p class="project-date">Sep 2025 – Dec 2025</p>
-<p class="project-summary">A full-stack Flask and SQLite app with GeoJSON rendering, letting commuters find any of 1,000+ Bristol bus stops on one map.</p>
+<p class="project-summary">Flask and SQLite app with GeoJSON rendering, helping commuters find any of 1,000+ Bristol bus stops on one map.</p>
 <div class="project-tech"><span class="tech-tag">Python (Flask)</span><span class="tech-tag">GeoJSON</span><span class="tech-tag">JavaScript</span><span class="tech-tag">Jinja2</span><span class="tech-tag">SQLite</span><span class="tech-tag">Vercel</span></div>
 <div class="project-features">
 <ul>
-<li>Derived four user requirements from commuter journey analysis and implemented each one.</li>
-<li>Mobile-responsive frontend with map and table views, search, and saved favourites.</li>
-<li>Reviewed and tested all GitHub Copilot and OpenAI Codex output before integrating it.</li>
+<li>Built four user requirements derived from commuter journey analysis.</li>
+<li>Responsive map and table views, with search and saved favourites.</li>
+<li>Reviewed and tested all Copilot and Codex output before integrating it.</li>
 </ul>
 </div>
 <div class="project-links">
@@ -708,6 +715,31 @@ filterButtons.forEach(b=>b.classList.toggle('active',b===btn));
 projectCards.forEach(card=>{
 card.classList.toggle('hidden',filter!=='all'&&card.dataset.category!==filter);
 });
+/* Replay the same slide-in on every shown card, so it looks identical on each filter click */
+let shownIndex=0;
+projectCards.forEach(card=>{
+card.classList.remove('anim-in');
+if(card.classList.contains('hidden'))return;
+card.style.animationDelay=(shownIndex*0.12)+'s';
+shownIndex++;
+card.classList.add('visible');
+void card.offsetWidth;
+card.classList.add('anim-in');
+});
+});
+});
+/* ── See more / See less for project cards ── */
+document.querySelectorAll('.project-card').forEach(card=>{
+const features=card.querySelector('.project-features');
+if(!features)return;
+const btn=document.createElement('button');
+btn.type='button';
+btn.className='see-more-btn';
+btn.textContent='See more';
+features.after(btn);
+btn.addEventListener('click',()=>{
+const open=card.classList.toggle('expanded');
+btn.textContent=open?'See less':'See more';
 });
 });
 </script>
