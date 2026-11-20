@@ -130,7 +130,7 @@ nav{position:fixed;top:0;left:0;width:100%;background-color:rgba(248,250,252,0.8
 .tech-tag:hover{background:var(--primary);color:white}
 .project-features ul li{margin-bottom:8px;padding-left:22px;position:relative;color:var(--gray);font-size:0.88rem}
 .project-features ul li::before{content:'✓';position:absolute;left:0;color:var(--success);font-weight:bold}
-.project-links{display:flex;gap:12px;margin-top:auto;padding-top:20px;flex-wrap:wrap}
+.project-links{display:flex;gap:12px;margin-top:0;padding-top:12px;flex-wrap:wrap}
 .link-btn{display:flex;align-items:center;gap:7px;padding:8px 16px;background:var(--light);border-radius:7px;font-size:0.88rem;font-weight:600;color:var(--secondary);border:1px solid var(--gray-light);transition:var(--transition)}
 .link-btn:hover{background:var(--primary);color:white;border-color:var(--primary);transform:translateY(-2px)}
 .sub-heading{font-family:'DM Mono',monospace;font-size:0.85rem;letter-spacing:2px;text-transform:uppercase;color:var(--primary);margin:0 0 24px}
@@ -145,10 +145,6 @@ nav{position:fixed;top:0;left:0;width:100%;background-color:rgba(248,250,252,0.8
 .filter-btn:hover{border-color:var(--primary);color:var(--primary)}
 .filter-btn.active{background:var(--primary);border-color:var(--primary);color:white}
 .project-card.hidden{display:none}
-.project-card .project-features ul li:nth-child(n+2){display:none}
-.project-card.expanded .project-features ul li:nth-child(n+2){display:list-item}
-.see-more-btn{align-self:flex-start;margin-top:10px;background:none;border:none;padding:0;font-family:'Inter',sans-serif;font-weight:600;font-size:0.88rem;color:var(--primary);cursor:none}
-.see-more-btn:hover{text-decoration:underline}
 .project-card.reveal-left,.project-card.reveal-right{transition:opacity 0.9s ease,transform 0.9s cubic-bezier(0.22,1,0.36,1)}
 .project-card.reveal-left.visible,.project-card.reveal-right.visible{transition:opacity 0.9s ease,transform 0.9s cubic-bezier(0.22,1,0.36,1),box-shadow 0.35s ease,border-color 0.35s ease}
 .project-card.reveal-left.visible:hover,.project-card.reveal-right.visible:hover{transition:var(--transition)}
@@ -159,14 +155,15 @@ nav{position:fixed;top:0;left:0;width:100%;background-color:rgba(248,250,252,0.8
 .project-card.reveal-left,.project-card.reveal-right{transition:opacity 1.1s cubic-bezier(0.22,1,0.36,1),transform 1.1s cubic-bezier(0.22,1,0.36,1),box-shadow 0.35s ease,border-color 0.35s ease}
 
 /* ── Other projects (uniform cards) ────────────────────────── */
-#projects{background:var(--light)}
-.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;align-items:stretch}
+#projects{background:var(--light);min-height:auto;padding:70px 0}
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;align-items:stretch}
 .project-card{background:white;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.06);transition:var(--transition);border:1px solid var(--gray-light);display:flex;flex-direction:column}
 .project-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,0.10);border-color:transparent}
-.project-card .project-img{height:150px;font-size:2.6rem}
-.project-card .project-body{padding:24px;flex:1;display:flex;flex-direction:column}
+.project-card .project-img{height:110px;font-size:2.2rem}
+.project-card .project-body{padding:20px;flex:1;display:flex;flex-direction:column}
 .project-card h3{margin-bottom:6px;color:var(--secondary);font-size:1.1rem}
 .project-card .project-summary{margin-bottom:0}
+.project-card{aspect-ratio:1/1}
 .project-card .project-tech{margin:12px 0}
 
 #iot-projects{background:white;padding:100px 0}
@@ -726,20 +723,6 @@ card.classList.add('visible');
 void card.offsetWidth;
 card.classList.add('anim-in');
 });
-});
-});
-/* ── See more / See less for project cards ── */
-document.querySelectorAll('.project-card').forEach(card=>{
-const features=card.querySelector('.project-features');
-if(!features)return;
-const btn=document.createElement('button');
-btn.type='button';
-btn.className='see-more-btn';
-btn.textContent='See more';
-features.after(btn);
-btn.addEventListener('click',()=>{
-const open=card.classList.toggle('expanded');
-btn.textContent=open?'See less':'See more';
 });
 });
 </script>
