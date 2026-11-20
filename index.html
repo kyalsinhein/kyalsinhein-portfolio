@@ -145,6 +145,10 @@ nav{position:fixed;top:0;left:0;width:100%;background-color:rgba(248,250,252,0.8
 .filter-btn:hover{border-color:var(--primary);color:var(--primary)}
 .filter-btn.active{background:var(--primary);border-color:var(--primary);color:white}
 .project-card.hidden{display:none}
+.project-card.reveal-left,.project-card.reveal-right{transition:opacity 0.9s ease,transform 0.9s cubic-bezier(0.22,1,0.36,1)}
+.project-card.reveal-left.visible,.project-card.reveal-right.visible{transition:opacity 0.9s ease,transform 0.9s cubic-bezier(0.22,1,0.36,1),box-shadow 0.35s ease,border-color 0.35s ease}
+.project-card.reveal-left.visible:hover,.project-card.reveal-right.visible:hover{transition:var(--transition)}
+.project-card.reveal-left,.project-card.reveal-right{transition:opacity 1.1s cubic-bezier(0.22,1,0.36,1),transform 1.1s cubic-bezier(0.22,1,0.36,1),box-shadow 0.35s ease,border-color 0.35s ease}
 
 /* ── Other projects (uniform cards) ────────────────────────── */
 #projects{background:var(--light)}
@@ -384,7 +388,7 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 
 <div class="projects-grid">
 
-<div class="project-card reveal" data-category="uni">
+<div class="project-card reveal-left" data-category="uni">
 <div class="project-img" style="background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);"><i class="fas fa-shield-halved"></i></div>
 <div class="project-body">
 <h3>Cloud Sentinel Remediation Engine [Master's Project]</h3>
@@ -406,7 +410,7 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 </div>
 </div>
 
-<div class="project-card reveal stagger-1" data-category="personal">
+<div class="project-card reveal-right stagger-1" data-category="personal">
 <div class="project-img" style="background: linear-gradient(135deg, #0f172a 0%, #06b6d4 100%);"><i class="fas fa-heart-pulse"></i></div>
 <div class="project-body">
 <h3>PulseBoard: Real-Time Uptime Monitor</h3>
@@ -428,7 +432,7 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 </div>
 </div>
 
-<div class="project-card reveal stagger-2" data-category="personal">
+<div class="project-card reveal-left stagger-2" data-category="personal">
 <div class="project-img" style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%);"><i class="fa-solid fa-robot"></i></div>
 <div class="project-body">
 <h3>AI Chatbot [Local LLM Integration]</h3>
@@ -450,7 +454,7 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 </div>
 </div>
 
-<div class="project-card reveal stagger-3" data-category="uni">
+<div class="project-card reveal-right stagger-3" data-category="uni">
 <div class="project-img" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);"><i class="fas fa-bus"></i></div>
 <div class="project-body">
 <h3>Bristol Bus Stop Explorer</h3>
