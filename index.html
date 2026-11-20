@@ -633,11 +633,9 @@ navLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+cu
 scrollTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
 const revealEls=document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){
-e.target.classList.add('visible');
-setTimeout(()=>{e.target.style.transitionDelay='0s'},1300);
-observer.unobserve(e.target);
-}})},{threshold:0.12,rootMargin:'0px 0px -50px 0px'});
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{
+e.target.classList.toggle('visible',e.isIntersecting);
+})},{threshold:0.12,rootMargin:'0px 0px -50px 0px'});
 revealEls.forEach(el=>observer.observe(el));
 
 const counters=document.querySelectorAll('.stat-number .count');
