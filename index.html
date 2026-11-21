@@ -69,7 +69,7 @@ html[lang="my"] .nav-links{gap:22px}
 html[lang="my"] .nav-links a{line-height:1.8}
 
 /* ── Burmese typography (Myanmar script needs more line height and no negative tracking) ── */
-html[lang="my"] [data-i18n]{font-family:'Noto Sans Myanmar','Inter',sans-serif;letter-spacing:normal}
+html[lang="my"] [data-i18n]{font-family:'Noto Sans Myanmar','Inter',sans-serif!important;letter-spacing:normal!important}
 html[lang="my"] h2[data-i18n],html[lang="my"] h2 [data-i18n],html[lang="my"] h3[data-i18n]{line-height:1.7}
 html[lang="my"] p[data-i18n]{line-height:1.95}
 html[lang="my"] li[data-i18n]{line-height:1.9}
@@ -285,7 +285,7 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 <div class="container">
 <div class="hero">
 <div class="hero-text">
-<p style="font-family:'DM Mono',monospace; color:var(--primary); font-size:0.9rem; margin-bottom:8px; letter-spacing:2px;" class="reveal">👋 &nbsp;HELLO, I'M</p>
+<p style="font-family:'DM Mono',monospace; color:var(--primary); font-size:0.9rem; margin-bottom:8px; letter-spacing:2px;" class="reveal" data-i18n="hello">👋 &nbsp;HELLO, I'M</p>
 <h1 class="glitch reveal stagger-1" data-text="Kyal Sin Hein">Kyal Sin Hein</h1>
 <div class="typed-container reveal stagger-2"><span class="typed-text" id="typed-el"></span><span class="cursor-blink"></span></div>
 <p class="reveal stagger-3" style="margin-top:16px;" data-i18n="hero_p">Junior Software Engineer skilled in Python, Flask, SQL and JavaScript, with experience building RESTful APIs and database-driven applications. Recently completed an MSc in Information Technology, with a master's project on cloud security remediation. Experienced in Agile delivery and collaborative development.</p>
@@ -612,6 +612,7 @@ const I18N_MY={
   awards_h:"ဆုတံဆိပ်များနှင့် အသိအမှတ်ပြုလက်မှတ်များ",
   contact_h:"ဆက်သွယ်ရန်",
   hero_p:"Python၊ Flask၊ SQL နှင့် JavaScript တို့ကို ကျွမ်းကျင်ပိုင်နိုင်ပြီး RESTful API များနှင့် database အခြေပြု application များ တည်ဆောက်ဖူးသည့် အတွေ့အကြုံရှိသော Junior Software Engineer တစ်ဦးဖြစ်ပါသည်။ မကြာသေးမီက Information Technology မဟာသိပ္ပံဘွဲ့ (MSc) ကို ရရှိထားပြီး မဟာဘွဲ့စီမံကိန်းအဖြစ် cloud security remediation ဆိုင်ရာ ပရောဂျက်ကို လုပ်ဆောင်ခဲ့ပါသည်။ Agile နည်းစနစ်ဖြင့် လုပ်ငန်းဆောင်ရွက်ခြင်းနှင့် အဖွဲ့လိုက် ပူးပေါင်းဆော့ဖ်ဝဲရေးသားခြင်းတို့တွင်လည်း အတွေ့အကြုံရှိပါသည်။",
+  hello:"👋 မင်္ဂလာပါ၊",
   lets_talk:"ဆက်သွယ်ရန်",
   projects_h:"ဆော့ဖ်ဝဲ ပရောဂျက်များ",
   iot_h:"အိုင်အိုတီ ပရောဂျက်",
