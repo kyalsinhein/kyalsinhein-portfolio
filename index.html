@@ -658,6 +658,11 @@ img,svg{max-width:100%}
   .wmp-art{width:150px;height:150px}
 }
 
+/* Music buttons stay perfectly still when hovered or clicked (no lift, no shrink) */
+.wmp-ctl,.wmp-ctl:hover,.wmp-ctl:active,.wmp-ctl:focus{transform:none!important;transition:filter .2s ease,background .2s ease!important}
+.wmp-ctl:hover{filter:brightness(1.08)}
+.wmp-ctl:active{filter:brightness(.95)}
+
 /* ════════ EXPANDED PLAYER: cover on the left; title, artist and buttons stacked on the right ════════ */
 .wmp:not(.min){grid-template-columns:auto minmax(0,1fr);column-gap:16px;padding:0 14px 4px}
 .wmp:not(.min) .wmp-bar{grid-column:1 / -1;grid-row:1;padding:9px 0 7px}
