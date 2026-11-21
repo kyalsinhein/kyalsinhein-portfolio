@@ -319,6 +319,25 @@ footer{background:linear-gradient(180deg,rgba(24,98,200,.94),rgba(6,36,100,.97))
 .wmp-ctl.play{width:58px;height:58px;font-size:1.3rem;border-color:#2f8a12;background:linear-gradient(180deg,#c6f77f 0%,#79d935 48%,#47b01c 52%,#7fdc3c 100%);box-shadow:0 6px 14px rgba(40,120,10,.4),inset 0 1px 0 rgba(255,255,255,.9)}
 .wmp-ctl.play i{margin-top:0}
 .wmp.playing .wmp-disc{animation:spin 3s linear infinite}
+.wmp-controls{padding:2px 14px 14px}
+.wmp-ctl.repeat i{margin-top:0}
+.wmp-ctl.repeat.on{border-color:#2f8a12;background:linear-gradient(180deg,#c6f77f 0%,#79d935 48%,#47b01c 52%,#7fdc3c 100%);box-shadow:0 0 0 3px rgba(121,217,53,.35),inset 0 1px 0 rgba(255,255,255,.9)}
+/* Minimised: controls stay visible, just smaller */
+.wmp.min .wmp-controls{padding:8px 10px 10px;gap:12px}
+.wmp.min .wmp-ctl{width:38px;height:38px;font-size:.85rem}
+.wmp.min .wmp-ctl.play{width:46px;height:46px;font-size:1.05rem}
+.wmp.min .wmp-ctl small{display:none}
+.wmp.min .wmp-ctl i{margin-top:0}
+
+/* ── Transparent glass look for the music player ── */
+.wmp{background:linear-gradient(160deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,.18) 55%,rgba(190,225,255,.28) 100%);-webkit-backdrop-filter:blur(20px) saturate(170%);backdrop-filter:blur(20px) saturate(170%);border:1px solid rgba(255,255,255,.8);box-shadow:0 16px 38px rgba(0,50,130,.3),inset 0 1px 0 rgba(255,255,255,.95),inset 0 -1px 0 rgba(255,255,255,.3)}
+.wmp-bar{color:var(--secondary);text-shadow:0 1px 0 rgba(255,255,255,.7);background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,.12));border-bottom:1px solid rgba(255,255,255,.6)}
+.wmp-cover,.wmp-art{border:1px solid rgba(255,255,255,.9);box-shadow:0 3px 10px rgba(0,50,130,.3)}
+.wmp-meta small,.wmp-times{color:#0b3a7a}
+.wmp-meta b{text-shadow:0 1px 0 rgba(255,255,255,.6)}
+.wmp-ctl{color:var(--primary-dark);text-shadow:0 1px 0 rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.9);background:linear-gradient(180deg,rgba(255,255,255,.75),rgba(255,255,255,.18));-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 4px 12px rgba(0,50,130,.22),inset 0 1px 0 #fff,inset 0 -1px 0 rgba(255,255,255,.35)}
+.wmp-ctl.play,.wmp-ctl.repeat.on{color:#1d5a07;border-color:rgba(255,255,255,.95);background:linear-gradient(180deg,rgba(214,255,150,.85),rgba(90,200,40,.5));box-shadow:0 6px 16px rgba(40,140,10,.3),inset 0 1px 0 #fff}
+.wmp-ctl.repeat.on{box-shadow:0 0 0 3px rgba(121,217,53,.35),0 4px 12px rgba(40,140,10,.3),inset 0 1px 0 #fff}
 
 /* Phones and tablets */
 @media(max-width:1080px){
@@ -345,6 +364,45 @@ footer{background:linear-gradient(180deg,rgba(24,98,200,.94),rgba(6,36,100,.97))
   *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}
   html{scroll-behavior:auto}
   .bubbles{display:none}
+}
+
+/* ════════ TRANSPARENT GLASS THEME (nav, windows, cards, footer) ════════
+   Only the big outer panels blur the background; inner cards are just translucent,
+   because blur inside a blurred panel does not show in browsers. */
+nav{background:linear-gradient(180deg,rgba(255,255,255,.5),rgba(255,255,255,.14));-webkit-backdrop-filter:blur(20px) saturate(170%);backdrop-filter:blur(20px) saturate(170%);border-bottom:1px solid rgba(255,255,255,.8);box-shadow:0 8px 26px rgba(0,60,140,.2),inset 0 1px 0 rgba(255,255,255,.95)}
+.nav-links a:hover{background:rgba(255,255,255,.55);border-color:rgba(255,255,255,.9)}
+.nav-links a.active{background:linear-gradient(180deg,rgba(143,208,255,.85),rgba(31,122,224,.7));border-color:rgba(255,255,255,.8)}
+.mobile-menu-btn{background:linear-gradient(180deg,rgba(255,255,255,.75),rgba(255,255,255,.25));border:1px solid rgba(255,255,255,.9)}
+
+.win{background:linear-gradient(160deg,rgba(255,255,255,.5) 0%,rgba(255,255,255,.14) 55%,rgba(190,225,255,.26) 100%);-webkit-backdrop-filter:blur(18px) saturate(160%);backdrop-filter:blur(18px) saturate(160%);border:1px solid rgba(255,255,255,.8);box-shadow:0 22px 50px rgba(0,50,130,.28),inset 0 1px 0 rgba(255,255,255,.95)}
+.win-bar{color:var(--secondary);text-shadow:0 1px 0 rgba(255,255,255,.75)}
+.win-ico{background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(255,255,255,.45));border:1px solid rgba(255,255,255,.9)}
+.win-btn{background:linear-gradient(180deg,rgba(255,255,255,.7),rgba(120,190,250,.5));border:1px solid rgba(255,255,255,.9)}
+.win-btn.close{background:linear-gradient(180deg,rgba(255,190,165,.85),rgba(224,74,28,.7))}
+.win-addr{background:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.7);border-bottom:none}
+.win-addr .addr{background:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.9)}
+.win-body{background:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.7)}
+
+.skill-category,.education-card,.project-card,.iot-project-detail,.award-card,.contact-item{background:linear-gradient(180deg,rgba(255,255,255,.7),rgba(255,255,255,.45));border:1px solid rgba(255,255,255,.85);box-shadow:0 8px 22px rgba(0,60,140,.14),inset 0 1px 0 rgba(255,255,255,.95)}
+.skill-category{border-left:4px solid var(--primary)}
+.award-card{border-bottom:4px solid var(--primary)}
+.contact-link,.link-btn,.filter-btn{background:linear-gradient(180deg,rgba(255,255,255,.8),rgba(255,255,255,.4));border:1px solid rgba(255,255,255,.9);box-shadow:0 4px 12px rgba(0,60,140,.14),inset 0 1px 0 #fff}
+.link-btn:hover{background:var(--primary);color:#fff}
+.filter-btn.active{background:linear-gradient(180deg,rgba(143,208,255,.9),rgba(31,122,224,.75));color:#fff;border-color:rgba(255,255,255,.8)}
+.tech-tag,.date{background:linear-gradient(180deg,rgba(255,255,255,.8),rgba(255,255,255,.4));border:1px solid rgba(255,255,255,.9)}
+.iot-tag{background:var(--accent2)!important}
+.arduino-tag{background:#00979d!important}
+.skill-pill{background:linear-gradient(180deg,rgba(143,208,255,.9),rgba(31,122,224,.7));border:1px solid rgba(255,255,255,.8)}
+
+footer{background:linear-gradient(180deg,rgba(24,98,200,.4),rgba(6,36,100,.55));-webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%);border-top:1px solid rgba(255,255,255,.7)}
+#scroll-top{background:linear-gradient(180deg,rgba(255,255,255,.75),rgba(255,255,255,.25));color:var(--primary-dark);border:1px solid rgba(255,255,255,.9);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 8px 20px rgba(0,60,140,.25),inset 0 1px 0 #fff}
+
+@media(max-width:1080px){
+  .nav-links{background:rgba(255,255,255,.55);-webkit-backdrop-filter:blur(20px) saturate(170%);backdrop-filter:blur(20px) saturate(170%);border-bottom:1px solid rgba(255,255,255,.8)}
+}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  nav,.win,.wmp{background:rgba(235,245,255,.92)}
+  footer{background:rgba(10,50,130,.95)}
 }
 </style>
 </head>
@@ -773,7 +831,7 @@ footer{background:linear-gradient(180deg,rgba(24,98,200,.94),rgba(6,36,100,.97))
 <aside class="wmp" id="wmp" aria-label="Music player">
   <button type="button" class="wmp-bar" id="wmp-toggle" aria-expanded="true" aria-controls="wmp-body" title="Show or hide the music player">
     <i class="fas fa-compact-disc wmp-disc"></i>
-    <img class="wmp-cover" src="https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e021719d854080a93f79651ac4e" alt="Masterpiece by LNGSHOT album cover" width="38" height="38" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('no-cover');this.remove()">
+    <img class="wmp-cover" src="images/masterpiece-cover.jpg" alt="Masterpiece by LNGSHOT album cover" width="38" height="38" referrerpolicy="no-referrer" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e021719d854080a93f79651ac4e'}else{this.parentNode.classList.add('no-cover');this.remove()}">
     <span class="wmp-name wmp-name-open">Media Player</span>
     <span class="wmp-name wmp-name-min"><b>Masterpiece</b><small>LNGSHOT</small></span>
     <i class="fas fa-chevron-down wmp-chev"></i>
@@ -781,17 +839,18 @@ footer{background:linear-gradient(180deg,rgba(24,98,200,.94),rgba(6,36,100,.97))
   <div class="wmp-body" id="wmp-body">
     <div class="wmp-player">
       <div class="wmp-now">
-        <img class="wmp-art" src="https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e021719d854080a93f79651ac4e" alt="Masterpiece album cover" width="56" height="56" referrerpolicy="no-referrer" onerror="this.remove()">
+        <img class="wmp-art" src="images/masterpiece-cover.jpg" alt="Masterpiece album cover" width="56" height="56" referrerpolicy="no-referrer" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e021719d854080a93f79651ac4e'}else{this.remove()}">
         <div class="wmp-meta"><b>Masterpiece</b><small>LNGSHOT</small></div>
       </div>
       <input type="range" id="wmp-seek" min="0" max="100" value="0" step="0.1" aria-label="Seek">
       <div class="wmp-times"><span id="wmp-cur">0:00</span><span id="wmp-dur">0:00</span></div>
-      <div class="wmp-controls">
-        <button type="button" class="wmp-ctl" id="wmp-back" aria-label="Back 10 seconds" title="Back 10s"><i class="fas fa-backward"></i><small>10s</small></button>
-        <button type="button" class="wmp-ctl play" id="wmp-play" aria-label="Play"><i class="fas fa-play"></i></button>
-        <button type="button" class="wmp-ctl" id="wmp-fwd" aria-label="Forward 10 seconds" title="Forward 10s"><i class="fas fa-forward"></i><small>10s</small></button>
-      </div>
     </div>
+  </div>
+  <div class="wmp-controls" id="wmp-controls">
+    <button type="button" class="wmp-ctl" id="wmp-back" aria-label="Back 10 seconds" title="Back 10s"><i class="fas fa-backward"></i><small>10s</small></button>
+    <button type="button" class="wmp-ctl play" id="wmp-play" aria-label="Play" title="Play / Pause"><i class="fas fa-play"></i></button>
+    <button type="button" class="wmp-ctl" id="wmp-fwd" aria-label="Forward 10 seconds" title="Forward 10s"><i class="fas fa-forward"></i><small>10s</small></button>
+    <button type="button" class="wmp-ctl repeat" id="wmp-repeat" aria-label="Repeat" aria-pressed="false" title="Repeat: off"><i class="fas fa-repeat"></i></button>
   </div>
   <audio id="wmp-audio" preload="metadata" src="audio/LNGSHOT%20Masterpiece.mp3"></audio>
 </aside>
@@ -925,6 +984,14 @@ audio.addEventListener('timeupdate',()=>{
 audio.addEventListener('ended',()=>{audio.currentTime=0;seek.value=0});
 seek.addEventListener('input',()=>{seeking=true;if(audio.duration)curEl.textContent=fmt(seek.value/100*audio.duration)});
 seek.addEventListener('change',()=>{if(audio.duration)audio.currentTime=seek.value/100*audio.duration;seeking=false});
+
+const repeatBtn=document.getElementById('wmp-repeat');
+repeatBtn.addEventListener('click',()=>{
+  audio.loop=!audio.loop;
+  repeatBtn.classList.toggle('on',audio.loop);
+  repeatBtn.setAttribute('aria-pressed',audio.loop?'true':'false');
+  repeatBtn.title=audio.loop?'Repeat: on':'Repeat: off';
+});
 
 /* ── Typing animation ── */
 const phrases=['Junior Software Engineer','Python • Flask • JavaScript','REST APIs & Databases','Agile Full-Stack Development'];
