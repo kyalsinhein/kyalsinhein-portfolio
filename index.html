@@ -27,7 +27,7 @@ p{margin-bottom:1.5rem;color:var(--gray);font-weight:400}
 a{text-decoration:none;color:inherit;transition:var(--transition)}
 ul{list-style:none}
 .container{width:90%;max-width:1200px;margin:0 auto;padding:0 20px}
-section{padding:100px 0;min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+section{padding:100px 0;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center}
 .reveal{opacity:0;transform:translateY(40px);transition:opacity 0.7s ease,transform 0.7s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 .reveal-left{opacity:0;transform:translateX(-50px);transition:opacity 0.7s ease,transform 0.7s ease}
@@ -79,8 +79,10 @@ html[lang="my"] .project-summary[data-i18n]{line-height:1.9}
 #home{background:linear-gradient(145deg,#f0f9ff 0%,#e0f2fe 60%,#ede9fe 100%);position:relative;overflow:hidden}
 .hero{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1}
 .hero-text h1{margin-bottom:8px;background:linear-gradient(135deg,var(--secondary) 30%,var(--primary) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.typed-container{display:inline-flex;align-items:center;gap:4px}
-.typed-text{color:var(--primary);font-family:'DM Mono',monospace;font-size:1.15rem;font-weight:500}
+/* Fixed-height line so the typing animation never moves the content below it */
+.typed-container{display:flex;align-items:center;gap:4px;height:2rem;white-space:nowrap;overflow:hidden}
+.typed-text{color:var(--primary);font-family:'DM Mono',monospace;font-size:1.15rem;line-height:2rem;font-weight:500}
+.typed-text::before{content:'\200b'}
 .cursor-blink{display:inline-block;width:2px;height:1.1em;background:var(--primary);animation:blink 1s step-end infinite;vertical-align:text-bottom}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 .hero-text p{font-size:1.1rem;margin:18px 0 28px;max-width:92%}
@@ -229,6 +231,8 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 @keyframes glitch2{0%,100%{clip-path:inset(60% 0 0 0)}50%{clip-path:inset(0 0 60% 0)}}
 .tilt-card{transform-style:preserve-3d}
 .reveal.tilt-card{transition:opacity 0.7s ease,transform 0.2s ease,box-shadow 0.35s ease,border-color 0.35s ease}
+/* Tilt cards must not also lift on hover: the lift moves the card out from under the pointer and makes it flicker */
+.reveal.tilt-card.visible:hover{transform:none}
 #scroll-top{position:fixed;bottom:30px;right:30px;width:48px;height:48px;background:var(--primary);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:500;box-shadow:0 8px 20px rgba(37,99,235,0.35);opacity:0;pointer-events:none;transition:var(--transition);border:none;font-size:1.1rem}
 #scroll-top.visible{opacity:1;pointer-events:all}
 #scroll-top:hover{transform:translateY(-4px) scale(1.1)}
@@ -690,8 +694,11 @@ for(let i=0;i<particles.length;i++){for(let j=i+1;j<particles.length;j++){
 const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,dist=Math.sqrt(dx*dx+dy*dy);
 if(dist<120){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle=`rgba(37,99,235,${0.12*(1-dist/120)})`;ctx.lineWidth=0.8;ctx.stroke()}
 }}}
-function animateParticles(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.update();p.draw()});drawLines();requestAnimationFrame(animateParticles)}
+let particlesRunning=true;
+function animateParticles(){if(!particlesRunning)return;ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.update();p.draw()});drawLines();requestAnimationFrame(animateParticles)}
 animateParticles();
+/* Stop drawing the particles once the hero is off screen, to keep scrolling smooth */
+new IntersectionObserver(([e])=>{const wasRunning=particlesRunning;particlesRunning=e.isIntersecting;if(particlesRunning&&!wasRunning)animateParticles()}).observe(document.getElementById('home'));
 
 const phrases=['Junior Software Engineer','Python • Flask • JavaScript','REST APIs & Databases','Agile Full-Stack Development'];
 let pIdx=0,cIdx=0,deleting=false;
@@ -721,9 +728,15 @@ navLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+cu
 scrollTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
 const revealEls=document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{
-e.target.classList.toggle('visible',e.isIntersecting);
-})},{threshold:0.12,rootMargin:'0px 0px -50px 0px'});
+/* Reveal each element once and stop watching it, so it never animates out and back in while scrolling */
+const observer=new IntersectionObserver((entries,obs)=>{entries.forEach(e=>{
+if(!e.isIntersecting)return;
+const el=e.target;
+el.classList.add('visible');
+obs.unobserve(el);
+/* drop the stagger delay afterwards so hover and tilt transitions respond instantly */
+setTimeout(()=>{el.style.transitionDelay='0s'},1200);
+})},{threshold:0,rootMargin:'0px 0px -8% 0px'});
 revealEls.forEach(el=>observer.observe(el));
 
 const counters=document.querySelectorAll('.stat-number .count');
@@ -745,7 +758,7 @@ if(!card.classList.contains('visible'))return;
 const rect=card.getBoundingClientRect();
 const x=(e.clientX-rect.left)/rect.width-0.5;
 const y=(e.clientY-rect.top)/rect.height-0.5;
-card.style.transform=`perspective(1000px) rotateY(${x*2}deg) rotateX(${-y*2}deg) translateY(-3px)`;
+card.style.transform=`perspective(1000px) rotateY(${x*2}deg) rotateX(${-y*2}deg)`;
 });
 card.addEventListener('mouseleave',()=>{card.style.transform=''});
 });
