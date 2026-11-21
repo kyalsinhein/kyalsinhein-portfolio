@@ -288,6 +288,16 @@ footer{background:linear-gradient(180deg,rgba(24,98,200,.94),rgba(6,36,100,.97))
 .wmp-bar .wmp-name{flex:1}
 .wmp-bar .wmp-chev{font-size:.75rem;transition:transform .3s ease}
 .wmp.min .wmp-chev{transform:rotate(180deg)}
+.wmp-cover{display:none;width:38px;height:38px;flex:none;object-fit:cover;border-radius:8px;border:1px solid #fff;box-shadow:0 2px 6px rgba(0,40,110,.45)}
+.wmp-name-min{display:none;flex-direction:column;min-width:0;line-height:1.15}
+.wmp-name-min b{font-size:.95rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wmp-name-min small{font-size:.72rem;font-weight:500;opacity:.92}
+.wmp.min .wmp-bar{padding:6px 10px}
+.wmp.min .wmp-cover{display:block}
+.wmp.min .wmp-disc{display:none}
+.wmp.min .wmp-name-open{display:none}
+.wmp.min .wmp-name-min{display:flex}
+.wmp.min .wmp-bar.no-cover .wmp-disc{display:inline-block}
 .wmp-body{max-height:380px;overflow:hidden;transition:max-height .35s ease}
 .wmp.min .wmp-body{max-height:0}
 .wmp-embed{padding:0 10px 10px}
@@ -744,8 +754,10 @@ footer{background:linear-gradient(180deg,rgba(24,98,200,.94),rgba(6,36,100,.97))
 <!-- ═════════ MUSIC PLAYER: "Masterpiece" by LNGSHOT (Spotify embed) ═════════ -->
 <aside class="wmp" id="wmp" aria-label="Music player">
   <button type="button" class="wmp-bar" id="wmp-toggle" aria-expanded="true" aria-controls="wmp-body" title="Show or hide the music player">
-    <i class="fas fa-compact-disc"></i>
-    <span class="wmp-name">Media Player</span>
+    <i class="fas fa-compact-disc wmp-disc"></i>
+    <img class="wmp-cover" src="https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e021719d854080a93f79651ac4e" alt="Masterpiece by LNGSHOT album cover" width="38" height="38" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('no-cover');this.remove()">
+    <span class="wmp-name wmp-name-open">Media Player</span>
+    <span class="wmp-name wmp-name-min"><b>Masterpiece</b><small>LNGSHOT</small></span>
     <i class="fas fa-chevron-down wmp-chev"></i>
   </button>
   <div class="wmp-body" id="wmp-body">
