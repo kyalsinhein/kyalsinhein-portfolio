@@ -633,9 +633,14 @@ img,svg{max-width:100%}
   .wmp-ctl small,.wmp.min .wmp-ctl small{display:none}
   .wmp-ctl i,.wmp.min .wmp-ctl i{margin-top:0}
   /* The duplicate cover/title block is not needed on mobile */
-  .wmp-body,.wmp.min .wmp-body{display:none}
+  /* Expanded: big album cover + bigger song and artist name */
+  .wmp-body{grid-column:1 / -1;grid-row:2;max-height:none}
+  .wmp.min .wmp-body{display:none}
+  .wmp-player{padding:6px 14px 4px}
+  .wmp-now{gap:16px;margin-bottom:6px}
+  .wmp-art{width:120px;height:120px;border-radius:14px}
   /* Seek bar only appears when the player is expanded */
-  .wmp-progress{grid-column:1 / -1;grid-row:2;padding:0 14px 6px}
+  .wmp-progress{grid-column:1 / -1;grid-row:3;padding:0 14px 8px}
   .wmp.min .wmp-progress{display:none}
   .wmp-progress .wmp-times{margin:0 2px 2px}
   footer{padding-bottom:90px}
@@ -650,6 +655,7 @@ img,svg{max-width:100%}
   .wmp-ctl,.wmp.min .wmp-ctl{width:34px;height:34px;font-size:.82rem}
   .wmp-ctl.play,.wmp.min .wmp-ctl.play{width:42px;height:42px;font-size:1rem}
   .wmp-name-min b{font-size:1rem}
+  .wmp-art{width:150px;height:150px}
 }
 </style>
 </head>
