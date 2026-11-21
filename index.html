@@ -6,7 +6,7 @@
 <title>Kyal Sin Hein | Junior Software Engineer</title>
 <link rel="icon" href="./images/logo/logo.png" type="image/png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&family=Noto+Sans+Myanmar:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--primary:#2563eb;--primary-dark:#1d4ed8;--accent:#06b6d4;--accent2:#8b5cf6;--secondary:#0f172a;--light:#f8fafc;--gray:#64748b;--gray-light:#e2e8f0;--success:#10b981;--transition:all 0.35s cubic-bezier(0.4,0,0.2,1)}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -55,6 +55,26 @@ nav{position:fixed;top:0;left:0;width:100%;background-color:rgba(248,250,252,0.8
 .nav-links a.active{color:var(--primary)}
 .nav-links a.active::after{width:100%}
 .mobile-menu-btn{display:none;font-size:1.5rem;color:var(--secondary)}
+
+/* ── Language toggle ── */
+.lang-switch{display:inline-flex;align-items:center;gap:10px;padding:6px 12px;border-radius:999px;border:1px solid var(--gray-light);background:white;box-shadow:0 2px 8px rgba(0,0,0,0.06);transition:var(--transition)}
+.lang-switch:hover{box-shadow:0 6px 16px rgba(0,0,0,0.12);transform:translateY(-2px)}
+.lang-switch:focus-visible{outline:3px solid rgba(37,99,235,0.35);outline-offset:2px}
+.lang-switch .flag{width:24px;height:16px;display:block;border-radius:3px;box-shadow:0 0 0 1px rgba(0,0,0,0.12);transition:var(--transition)}
+.switch-track{position:relative;width:42px;height:24px;border-radius:999px;background:var(--gray-light);transition:var(--transition);flex-shrink:0}
+.switch-knob{position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:white;box-shadow:0 1px 4px rgba(0,0,0,0.3);transition:transform 0.3s cubic-bezier(0.4,0,0.2,1)}
+.lang-switch.is-on .switch-track{background:var(--primary)}
+.lang-switch.is-on .switch-knob{transform:translateX(18px)}
+html[lang="my"] .nav-links{gap:22px}
+html[lang="my"] .nav-links a{line-height:1.8}
+
+/* ── Burmese typography (Myanmar script needs more line height and no negative tracking) ── */
+html[lang="my"] [data-i18n]{font-family:'Noto Sans Myanmar','Inter',sans-serif;letter-spacing:normal}
+html[lang="my"] h2[data-i18n],html[lang="my"] h2 [data-i18n],html[lang="my"] h3[data-i18n]{line-height:1.7}
+html[lang="my"] p[data-i18n]{line-height:1.95}
+html[lang="my"] li[data-i18n]{line-height:1.9}
+html[lang="my"] .project-summary[data-i18n]{line-height:1.9}
+
 #particles-canvas{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
 #home{background:linear-gradient(145deg,#f0f9ff 0%,#e0f2fe 60%,#ede9fe 100%);position:relative;overflow:hidden}
 .hero{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1}
@@ -215,7 +235,7 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 
 /* Custom cursor only on devices with a real mouse */
 @media (hover:hover) and (pointer:fine){
-  body,a,button,.btn,.mobile-menu-btn,.carousel-btn,.dot,#scroll-top,.contact-item,.filter-btn{cursor:none}
+  body,a,button,.btn,.mobile-menu-btn,.carousel-btn,.dot,#scroll-top,.contact-item,.filter-btn,.lang-switch{cursor:none}
 }
 @media (hover:none),(pointer:coarse){#cursor,#cursor-ring{display:none!important}}
 
@@ -240,13 +260,18 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 <a href="#home" class="logo">KSH<span>.</span></a>
 <div class="mobile-menu-btn" aria-label="Toggle menu"><i class="fas fa-bars"></i></div>
 <ul class="nav-links">
-<li><a href="#home">Home</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#education">Education</a></li>
-<li><a href="#projects">Software Projects</a></li>
-<li><a href="#iot-projects">IoT Project</a></li>
-<li><a href="#awards">Awards</a></li>
-<li><a href="#contact">Contact</a></li>
+<li><a href="#home" data-i18n="nav_home">Home</a></li>
+<li><a href="#about" data-i18n="nav_about">About</a></li>
+<li><a href="#education" data-i18n="nav_edu">Education</a></li>
+<li><a href="#projects" data-i18n="nav_projects">Software Projects</a></li>
+<li><a href="#iot-projects" data-i18n="nav_iot">IoT Project</a></li>
+<li><a href="#awards" data-i18n="nav_awards">Awards</a></li>
+<li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+<li><button type="button" class="lang-switch" id="lang-toggle" role="switch" aria-checked="false" aria-label="Burmese language on or off" title="English / မြန်မာ">
+<svg class="flag flag-en" viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><clipPath id="uk-clip"><rect width="60" height="30"/></clipPath><g clip-path="url(#uk-clip)"><rect width="60" height="30" fill="#012169"/><path d="M0,0 60,30M60,0 0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 60,30M60,0 0,30" stroke="#C8102E" stroke-width="2.5"/><path d="M30,0v30M0,15h60" stroke="#fff" stroke-width="10"/><path d="M30,0v30M0,15h60" stroke="#C8102E" stroke-width="6"/></g></svg>
+<span class="switch-track"><span class="switch-knob"></span></span>
+<svg class="flag flag-my" viewBox="0 0 24 16" preserveAspectRatio="none" aria-hidden="true"><rect width="24" height="5.34" fill="#FECB00"/><rect y="5.33" width="24" height="5.34" fill="#34B233"/><rect y="10.66" width="24" height="5.34" fill="#EA2839"/><polygon fill="#fff" points="12,3.8 13.03,6.98 16.38,6.98 13.67,8.94 14.7,12.12 12,10.16 9.3,12.12 10.33,8.94 7.63,6.98 10.97,6.98"/></svg>
+</button></li>
 </ul>
 </div>
 </nav>
@@ -259,9 +284,9 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 <p style="font-family:'DM Mono',monospace; color:var(--primary); font-size:0.9rem; margin-bottom:8px; letter-spacing:2px;" class="reveal">👋 &nbsp;HELLO, I'M</p>
 <h1 class="glitch reveal stagger-1" data-text="Kyal Sin Hein">Kyal Sin Hein</h1>
 <div class="typed-container reveal stagger-2"><span class="typed-text" id="typed-el"></span><span class="cursor-blink"></span></div>
-<p class="reveal stagger-3" style="margin-top:16px;">Junior Software Engineer skilled in Python, Flask, SQL and JavaScript, with experience building RESTful APIs and database-driven applications. Recently completed an MSc in Information Technology, with a master's project on cloud security remediation. Experienced in Agile delivery and collaborative development.</p>
+<p class="reveal stagger-3" style="margin-top:16px;" data-i18n="hero_p">Junior Software Engineer skilled in Python, Flask, SQL and JavaScript, with experience building RESTful APIs and database-driven applications. Recently completed an MSc in Information Technology, with a master's project on cloud security remediation. Experienced in Agile delivery and collaborative development.</p>
 <div style="display:flex; gap:14px; flex-wrap:wrap;" class="reveal stagger-4">
-<a href="#contact" class="btn btn-outline">Let's Talk</a>
+<a href="#contact" class="btn btn-outline" data-i18n="lets_talk">Let's Talk</a>
 </div>
 <div class="contact-links reveal stagger-5">
 <a href="https://github.com/kyalsinhein" target="_blank" rel="noopener" class="contact-link"><i class="fab fa-github"></i><span>GitHub</span></a>
@@ -296,18 +321,18 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 
 <section id="about">
 <div class="container">
-<h2 class="reveal">About Me</h2>
+<h2 class="reveal" data-i18n="about_h">About Me</h2>
 <div class="about-content">
 <div class="about-text reveal-left">
-<h3>Profile</h3>
-<p>Junior Software Engineer with a strong foundation in full-stack development and a growing focus on cloud security. Experienced in building RESTful APIs, database-driven applications, and leading a four-developer Agile team to deliver a working application.</p>
-<p>Experience refactoring database logic, building a geospatial web app for 1,000+ Bristol bus stops (GeoJSON), and writing modular, maintainable code. Recently completed an MSc in IT at UWE Bristol, specialising in Cloud Computing and Big Data.</p>
+<h3 data-i18n="profile_h">Profile</h3>
+<p data-i18n="about_p1">Junior Software Engineer with a strong foundation in full-stack development and a growing focus on cloud security. Experienced in building RESTful APIs, database-driven applications, and leading a four-developer Agile team to deliver a functional academic project application.</p>
+<p data-i18n="about_p2">Experience refactoring database logic, building a geospatial web app for 1,000+ Bristol bus stops (GeoJSON), and writing modular, maintainable code. Recently completed an MSc in IT at UWE Bristol, specialising in Cloud Computing and Big Data.</p>
 <div class="skill-pills" style="margin-top:24px;">
 <span class="skill-pill">Python</span><span class="skill-pill">JavaScript</span><span class="skill-pill">SQL</span><span class="skill-pill">Flask</span><span class="skill-pill">FastAPI</span><span class="skill-pill">Streamlit</span><span class="skill-pill">HTML/CSS</span><span class="skill-pill">Git</span><span class="skill-pill">MySQL</span><span class="skill-pill">SQLite</span><span class="skill-pill">Agile/Scrum</span><span class="skill-pill">REST APIs</span><span class="skill-pill">Docker</span>
 </div>
 </div>
 <div class="skills reveal-right">
-<h3>Skills</h3>
+<h3 data-i18n="skills_h">Skills</h3>
 <div class="skills-container">
 <div class="skill-category tilt-card reveal stagger-1"><h4><i class="fas fa-code"></i> Programming Languages</h4><ul><li>Python</li><li>JavaScript</li><li>SQL</li></ul></div>
 <div class="skill-category tilt-card reveal stagger-2"><h4><i class="fas fa-layer-group"></i> Frameworks & Libraries</h4><ul><li>Flask</li><li>Streamlit</li><li>Jinja2</li></ul></div>
@@ -324,7 +349,7 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 
 <section id="education">
 <div class="container">
-<h2 class="reveal">Education</h2>
+<h2 class="reveal" data-i18n="edu_h">Education</h2>
 <div class="education-container">
 <div class="education-card tilt-card reveal stagger-1">
 <div style="margin-bottom:16px;"><span class="date">Sept 2025 – Sept 2026</span></div>
@@ -378,7 +403,7 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 
 <section id="projects">
 <div class="container">
-<h2 class="reveal">Software Projects</h2>
+<h2 class="reveal" data-i18n="projects_h">Software Projects</h2>
 
 <div class="filter-bar reveal" role="group" aria-label="Filter projects">
 <button class="filter-btn active" data-filter="all">All</button>
@@ -393,13 +418,13 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 <h3>Cloud Sentinel Remediation Engine [Master's Project]</h3>
 <p class="project-org">UWE Bristol</p>
 <p class="project-date">Sept 2025 – Sept 2026</p>
-<p class="project-summary">Human-in-the-loop pipeline that turns cloud misconfiguration findings from AWS, Azure and GCP into review-ready remediation scripts.</p>
+<p class="project-summary" data-i18n="cs_sum">Human-in-the-loop pipeline that turns cloud misconfiguration findings from AWS, Azure and GCP into review-ready remediation scripts.</p>
 <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">CVSS v4.0</span><span class="tech-tag">Streamlit</span><span class="tech-tag">AWS / Azure / GCP</span><span class="tech-tag">JSONL</span><span class="tech-tag">Bash</span></div>
 <div class="project-features">
 <ul>
-<li>Scored 619 findings on CVSS v4.0 base vectors across 12 vulnerability categories.</li>
-<li>Generated review-only remediation scripts from a template library, with manual review as fallback.</li>
-<li>Added an evaluator for script structure and review-time savings (89.2% net reduction), deployed as a Streamlit demo.</li>
+<li data-i18n="cs_1">Scored 619 findings on CVSS v4.0 base vectors across 12 vulnerability categories.</li>
+<li data-i18n="cs_2">Generated review-only remediation scripts from a template library, with manual review as fallback.</li>
+<li data-i18n="cs_3">Added an evaluator for script structure and review-time savings (89.2% net reduction), deployed as a Streamlit demo.</li>
 </ul>
 </div>
 <div class="project-links">
@@ -414,13 +439,13 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 <h3>PulseBoard: Real-Time Uptime Monitor</h3>
 <p class="project-org">Personal Project</p>
 <p class="project-date">Oct 2026 – Present</p>
-<p class="project-summary">Self-hosted monitor that checks web service health and streams uptime and latency to a live dashboard.</p>
+<p class="project-summary" data-i18n="pb_sum">Self-hosted monitor that checks web service health and streams uptime and latency to a live dashboard.</p>
 <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">FastAPI</span><span class="tech-tag">asyncio</span><span class="tech-tag">JavaScript</span><span class="tech-tag">SQLite</span><span class="tech-tag">SSE</span><span class="tech-tag">Docker</span></div>
 <div class="project-features">
 <ul>
-<li>Async FastAPI health checks every 10 seconds, with 24-hour uptime and p50/p95 latency in SQLite.</li>
-<li>Live dashboard over Server-Sent Events, with automatic incident logging.</li>
-<li>Dockerised, with a REST API to add or remove services at runtime.</li>
+<li data-i18n="pb_1">Async FastAPI health checks every 10 seconds, with 24-hour uptime and p50/p95 latency in SQLite.</li>
+<li data-i18n="pb_2">Live dashboard over Server-Sent Events, with automatic incident logging.</li>
+<li data-i18n="pb_3">Dockerised, with a REST API to add or remove services at runtime.</li>
 </ul>
 </div>
 <div class="project-links">
@@ -435,13 +460,13 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 <h3>AI Chatbot [Local LLM Integration]</h3>
 <p class="project-org">Personal Project</p>
 <p class="project-date">Jan 2026 – Present</p>
-<p class="project-summary">Python chatbot running local LLMs (Llama, Mistral) through LM Studio, working offline with no cloud cost.</p>
+<p class="project-summary" data-i18n="ai_sum">Python chatbot running local LLMs (Llama, Mistral) through LM Studio, working offline with no cloud cost.</p>
 <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">REST API</span><span class="tech-tag">LM Studio</span><span class="tech-tag">Llama/Mistral</span></div>
 <div class="project-features">
 <ul>
-<li>Modular SimpleChat class for reusable REST API communication.</li>
-<li>Handles server errors and unreachable servers with session management.</li>
-<li>Inference runs locally, so prompts never leave the machine.</li>
+<li data-i18n="ai_1">Modular SimpleChat class for reusable REST API communication.</li>
+<li data-i18n="ai_2">Handles server errors and unreachable servers with session management.</li>
+<li data-i18n="ai_3">Inference runs locally, so prompts never leave the machine.</li>
 </ul>
 </div>
 <div class="project-links">
@@ -456,13 +481,13 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 <h3>Bristol Bus Stop Explorer</h3>
 <p class="project-org">UWE Bristol</p>
 <p class="project-date">Sep 2025 – Dec 2025</p>
-<p class="project-summary">Flask and SQLite app with GeoJSON rendering, helping commuters find any of 1,000+ Bristol bus stops on one map.</p>
+<p class="project-summary" data-i18n="bus_sum">Flask and SQLite app with GeoJSON rendering, helping commuters find any of 1,000+ Bristol bus stops on one map.</p>
 <div class="project-tech"><span class="tech-tag">Python (Flask)</span><span class="tech-tag">GeoJSON</span><span class="tech-tag">JavaScript</span><span class="tech-tag">Jinja2</span><span class="tech-tag">SQLite</span><span class="tech-tag">Vercel</span></div>
 <div class="project-features">
 <ul>
-<li>Built four user requirements derived from commuter journey analysis.</li>
-<li>Responsive map and table views, with search and saved favourites.</li>
-<li>Reviewed and tested all Copilot and Codex output before integrating it.</li>
+<li data-i18n="bus_1">Built four user requirements derived from commuter journey analysis.</li>
+<li data-i18n="bus_2">Responsive map and table views, with search and saved favourites.</li>
+<li data-i18n="bus_3">Reviewed and tested all Copilot and Codex output before integrating it.</li>
 </ul>
 </div>
 <div class="project-links">
@@ -478,7 +503,7 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 
 <section id="iot-projects">
 <div class="container">
-<h2 class="reveal">IoT Project</h2>
+<h2 class="reveal" data-i18n="iot_h">IoT Project</h2>
 <div class="iot-project-container">
 <div class="iot-project-detail reveal">
 <div class="iot-carousel-container">
@@ -504,9 +529,9 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 </div>
 <div class="project-features" style="margin-top:16px;">
 <ul>
-<li>Integrated Arduino-based smart parking using IR sensors and servo motors to automate entry/exit gates.</li>
-<li>Built real-time parking slot tracking with an I2C LCD display (4-space prototype).</li>
-<li>Configured sensor-driven servo logic for synchronized gate operation and vehicle detection.</li>
+<li data-i18n="iot_1">Integrated Arduino-based smart parking using IR sensors and servo motors to automate entry/exit gates.</li>
+<li data-i18n="iot_2">Built real-time parking slot tracking with an I2C LCD display (4-space prototype).</li>
+<li data-i18n="iot_3">Configured sensor-driven servo logic for synchronized gate operation and vehicle detection.</li>
 </ul>
 </div>
 <div class="project-links" style="margin-top:20px;">
@@ -520,7 +545,7 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 
 <section id="awards">
 <div class="container">
-<h2 class="reveal">🏆 Awards & Certifications</h2>
+<h2 class="reveal">🏆 <span data-i18n="awards_h">Awards & Certifications</span></h2>
 <div style="display: flex; flex-wrap: wrap; gap: 28px; justify-content: center; margin-top: 20px;">
 <div class="award-card" style="background: white; padding: 28px 32px; border-radius: 20px; text-align: center; min-width: 260px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); border-bottom: 3px solid var(--primary);">
 <i class="fas fa-graduation-cap" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 12px;"></i>
@@ -534,7 +559,7 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 
 <section id="contact">
 <div class="container">
-<h2 class="reveal">Contact Me</h2>
+<h2 class="reveal" data-i18n="contact_h">Contact Me</h2>
 <p class="reveal stagger-1">I'm currently open to new opportunities. Let's connect and discuss collaborations or just say hello!</p>
 <div class="contact-info">
 <a href="mailto:kyalsinhein.work@gmail.com" class="contact-item reveal stagger-1" aria-label="Send an email">
@@ -572,6 +597,73 @@ footer{background:#070d1a;color:white;padding:50px 0 20px;text-align:center}
 </footer>
 
 <script>
+/* ── Language switcher (English / Burmese) ──
+   Any element with data-i18n="key" is translated. English text is the HTML itself;
+   Burmese text lives in the dictionary below. */
+const I18N_MY={
+  about_h:"ကိုယ်ရေးအကျဉ်း",
+  profile_h:"ပရိုဖိုင်",
+  skills_h:"ကျွမ်းကျင်မှုများ",
+  edu_h:"ပညာအရည်အချင်း",
+  awards_h:"ဆုတံဆိပ်များနှင့် အသိအမှတ်ပြုလက်မှတ်များ",
+  contact_h:"ဆက်သွယ်ရန်",
+  hero_p:"Python၊ Flask၊ SQL နှင့် JavaScript တို့ကို ကျွမ်းကျင်ပိုင်နိုင်ပြီး RESTful API များနှင့် database အခြေပြု application များ တည်ဆောက်ဖူးသည့် အတွေ့အကြုံရှိသော Junior Software Engineer တစ်ဦးဖြစ်ပါသည်။ မကြာသေးမီက Information Technology မဟာသိပ္ပံဘွဲ့ (MSc) ကို ရရှိထားပြီး မဟာဘွဲ့စီမံကိန်းအဖြစ် cloud security remediation ဆိုင်ရာ ပရောဂျက်ကို လုပ်ဆောင်ခဲ့ပါသည်။ Agile နည်းစနစ်ဖြင့် လုပ်ငန်းဆောင်ရွက်ခြင်းနှင့် အဖွဲ့လိုက် ပူးပေါင်းဆော့ဖ်ဝဲရေးသားခြင်းတို့တွင်လည်း အတွေ့အကြုံရှိပါသည်။",
+  lets_talk:"ဆက်သွယ်ရန်",
+  projects_h:"ဆော့ဖ်ဝဲ ပရောဂျက်များ",
+  iot_h:"အိုင်အိုတီ ပရောဂျက်",
+
+  nav_home:"ပင်မစာမျက်နှာ",
+  nav_about:"ကိုယ်ရေးအကျဉ်း",
+  nav_edu:"ပညာအရည်အချင်း",
+  nav_projects:"ဆော့ဖ်ဝဲ ပရောဂျက်များ",
+  nav_iot:"အိုင်အိုတီ ပရောဂျက်",
+  nav_awards:"ဆုတံဆိပ်များ",
+  nav_contact:"ဆက်သွယ်ရန်",
+
+  about_p1:"Full-stack development နှင့် cloud security တို့တွင် ခိုင်မာသော အခြေခံကောင်းရှိပြီး cloud security ကို အဓိကထား ဆက်လက်လေ့လာနေသော Junior Software Engineer တစ်ဦးဖြစ်ပါသည်။ RESTful APIs များနှင့် database ကို အခြေခံသည့် application များကို တည်ဆောက်ရာတွင် အတွေ့အကြုံရှိပြီး လက်တွေ့အသုံးပြုနိုင်သည့် တက္ကသိုလ် စီမံကိန်း (academic project) application တစ်ခုကို အောင်မြင်စွာ ပေးပို့နိုင်ရန် developer လေးဦးပါဝင်သော Agile team တစ်ခုကို ဦးဆောင်ခဲ့ပါသည်။",
+  about_p2:"Database logic များကို ပြန်လည်ပြုပြင်ရေးသားခြင်း (refactoring)၊ Bristol မြို့ရှိ ဘတ်စ်ကားမှတ်တိုင် ၁,၀၀၀ ကျော်အတွက် geospatial web application (GeoJSON) တည်ဆောက်ခြင်းနှင့် ထိန်းသိမ်းရလွယ်ကူပြီး စနစ်တကျ ခွဲခြားရေးသားထားသော code များ ဖန်တီးခြင်းတို့တွင်လည်း အတွေ့အကြုံရှိပါသည်။ UWE Bristol မှ Cloud Computing နှင့် Big Data ဘာသာရပ်များကို အထူးပြု၍ MSc in IT ဘွဲ့ကို မကြာသေးမီက ရရှိထားပါသည်။",
+
+  cs_sum:"AWS၊ Azure နှင့် GCP တို့မှ cloud misconfiguration တွေ့ရှိချက်များကို ပြန်လည်စစ်ဆေးရန် အသင့်ဖြစ်သော ပြင်ဆင်မှု (remediation) script များအဖြစ် ပြောင်းလဲပေးသည့် Human-in-the-loop pipeline တစ်ခုဖြစ်ပါသည်။",
+  cs_1:"အားနည်းချက် အမျိုးအစား (vulnerability categories) ၁၂ ခုအတွင်းရှိ တွေ့ရှိချက်ပေါင်း ၆၁၉ ခုကို CVSS v4.0 base vectors များဖြင့် အမှတ်ပေး အကဲဖြတ်ခဲ့ပါသည်။",
+  cs_2:"Template library တစ်ခုမှတစ်ဆင့် ပြန်လည်စစ်ဆေးရန်အတွက်သာ ဖြစ်သော (review-only) ပြင်ဆင်မှု script များကို ထုတ်ပေးခဲ့ပြီး လိုအပ်ပါက လူကိုယ်တိုင် စစ်ဆေးမှု (manual review) ကို အရန်အဖြစ် ထည့်သွင်းထားပါသည်။",
+  cs_3:"Script တည်ဆောက်ပုံနှင့် ပြန်လည်စစ်ဆေးချိန် လျှော့ချနိုင်မှု (အသားတင် ၈၉.၂% လျှော့ချနိုင်မှု) တို့ကို တိုင်းတာပေးသည့် evaluator တစ်ခုကို ထည့်သွင်းခဲ့ပြီး Streamlit demo အဖြစ် Deploy လုပ်ခဲ့ပါသည်။",
+
+  pb_sum:"Web service များ၏ လုပ်ဆောင်မှု အခြေအနေ (health) ကို စစ်ဆေးပြီး uptime နှင့် latency အချက်အလက်များကို live dashboard ပေါ်သို့ တိုက်ရိုက် (stream) ပြသပေးသည့် self-hosted စောင့်ကြည့်စနစ် (monitor) တစ်ခုဖြစ်ပါသည်။",
+  pb_1:"၁၀ စက္ကန့်လျှင် တစ်ကြိမ် async FastAPI health check များ ပြုလုပ်ပြီး ၂၄ နာရီ uptime နှင့် p50/p95 latency အချက်အလက်များကို SQLite တွင် သိမ်းဆည်းထားပါသည်။",
+  pb_2:"Server-Sent Events (SSE) မှတစ်ဆင့် live dashboard ပေါ်တွင် ပြသပေးပြီး ပြဿနာဖြစ်ပွားမှုများ (incidents) ကို အလိုအလျောက် မှတ်တမ်းတင် (log) ပေးပါသည်။",
+  pb_3:"Docker ဖြင့် ထုပ်ပိုးတည်ဆောက် (Dockerised) ထားပြီး စနစ်လည်ပတ်နေစဉ် (runtime) အတွင်း service များကို ထည့်သွင်းခြင်း သို့မဟုတ် ဖယ်ရှားခြင်း ပြုလုပ်နိုင်ရန် REST API တစ်ခု ထည့်သွင်းထားပါသည်။",
+
+  ai_sum:"LM Studio မှတစ်ဆင့် local LLM များ (Llama, Mistral) ကို အသုံးပြုထားပြီး cloud ကုန်ကျစရိတ်မရှိဘဲ အင်တာနက်မလို (offline) အလုပ်လုပ်နိုင်သည့် Python chatbot တစ်ခုဖြစ်ပါသည်။",
+  ai_1:"ပြန်လည်အသုံးပြုနိုင်သော (reusable) REST API ဆက်သွယ်မှုများအတွက် စနစ်တကျ ခွဲခြားတည်ဆောက်ထားသည့် modular SimpleChat class ကို ရေးသားထားပါသည်။",
+  ai_2:"Session management စနစ်ဖြင့် server error များနှင့် ချိတ်ဆက်၍မရသော (unreachable) server အခြေအနေများကို ကိုင်တွယ်ဖြေရှင်းနိုင်ပါသည်။",
+  ai_3:"Inference လုပ်ငန်းစဉ်ကို စက်အတွင်း၌သာ (locally) လုပ်ဆောင်သည့်အတွက် prompt အချက်အလက်များ စက်အပြင်သို့ လုံးဝရောက်ရှိသွားခြင်း မရှိပါ။",
+
+  bus_sum:"Bristol မြို့ရှိ ဘတ်စ်ကားမှတ်တိုင် ၁,၀၀၀ ကျော်အနက် မည်သည့်မှတ်တိုင်ကိုမဆို မြေပုံတစ်ခုတည်းပေါ်တွင် ခရီးသွားပြည်သူများ အလွယ်တကူ ရှာဖွေနိုင်ရန် ကူညီပေးသည့် GeoJSON rendering ပါဝင်သော Flask နှင့် SQLite application တစ်ခုဖြစ်ပါသည်။",
+  bus_1:"ခရီးသွားပြည်သူများ၏ သွားလာမှုလမ်းကြောင်း လေ့လာဆန်းစစ်ချက် (commuter journey analysis) မှ ထွက်ပေါ်လာသော အသုံးပြုသူ လိုအပ်ချက် (user requirements) လေးခုကို အကောင်အထည်ဖော် တည်ဆောက်ခဲ့ပါသည်။",
+  bus_2:"ရှာဖွေမှု (search) နှင့် အကြိုက်ဆုံးမှတ်တိုင်များ သိမ်းဆည်းမှု (saved favourites) လုပ်ဆောင်ချက်များ ပါဝင်သော responsive map နှင့် table view များကို ထည့်သွင်းရေးသားထားပါသည်။",
+  bus_3:"စနစ်အတွင်းသို့ ပေါင်းစပ်ထည့်သွင်းခြင်း (integrate) မပြုလုပ်မီ Copilot နှင့် Codex တို့မှ ထွက်ရှိလာသော code အားလုံးကို သေချာစွာ ပြန်လည်စစ်ဆေးပြီး စမ်းသပ်မှု (test) များ ပြုလုပ်ခဲ့ပါသည်။",
+
+  iot_1:"အဝင်/အထွက် ဂိတ်တံခါးများ အလိုအလျောက် အဖွင့်အပိတ်ပြုလုပ်နိုင်ရန် IR sensor များနှင့် servo motor များကို အသုံးပြုထားသည့် Arduino အခြေခံ smart parking စနစ်ကို ပေါင်းစပ်တည်ဆောက်ခဲ့ပါသည်။",
+  iot_2:"I2C LCD display ဖြင့် ကားပါကင်နေရာလွတ်များကို အချိန်နှင့်တစ်ပြေးညီ (real-time) ခြေရာခံပြသပေးနိုင်သည့် စနစ် (ကား ၄ စီးဆံ့ နမူနာပုံစံငယ်/prototype) ကို တည်ဆောက်ခဲ့ပါသည်။",
+  iot_3:"ယာဉ်ဝင်ရောက်မှုကို အာရုံခံသိရှိခြင်း (vehicle detection) နှင့် ဂိတ်တံခါးများ ဟန်ချက်ညီညီ လည်ပတ်လုပ်ဆောင်နိုင်စေရန် sensor ကို အခြေခံသည့် servo logic များကို ချိန်ညှိသတ်မှတ် (configure) ပေးခဲ့ပါသည်။"
+};
+
+const langToggle=document.getElementById('lang-toggle');
+function applyLang(lang){
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    if(!el.hasAttribute('data-en'))el.setAttribute('data-en',el.innerHTML);
+    const key=el.getAttribute('data-i18n');
+    el.innerHTML=(lang==='my'&&I18N_MY[key])?I18N_MY[key]:el.getAttribute('data-en');
+  });
+  document.documentElement.lang=lang;
+  langToggle.setAttribute('aria-checked',lang==='my'?'true':'false');
+  langToggle.classList.toggle('is-on',lang==='my');
+}
+langToggle.addEventListener('click',()=>{
+  applyLang(document.documentElement.lang==='my'?'en':'my');
+});
+/* English is always the default on page load */
+
 const cursor=document.getElementById('cursor');
 const ring=document.getElementById('cursor-ring');
 const isTouch=window.matchMedia('(hover: none), (pointer: coarse)').matches;
