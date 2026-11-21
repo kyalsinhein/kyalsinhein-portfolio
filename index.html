@@ -456,6 +456,14 @@ nav::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
 /* HELLO, I'M bubble: kept exactly as the original */
 .hello-bubble{display:inline-block;position:relative;padding:6px 18px;margin-bottom:16px;border-radius:20px;background:linear-gradient(180deg,#f0ffc0,#9be04a);border:1px solid #6fb82a;color:#2c5a09;font-family:'DM Mono',monospace;font-size:.85rem;font-weight:400;letter-spacing:2px;box-shadow:0 4px 10px rgba(60,120,20,.25),inset 0 1px 0 #fff}
 .hello-bubble::after{content:'';position:absolute;left:24px;bottom:-8px;width:14px;height:14px;background:#9be04a;border-right:1px solid #6fb82a;border-bottom:1px solid #6fb82a;transform:rotate(45deg)}
+
+/* Seek bar + times stay visible when minimised */
+.wmp-player{padding-bottom:8px}
+.wmp-progress{padding:0 14px}
+.wmp-progress .wmp-times{margin:0 2px 6px}
+.wmp.min .wmp-progress{padding:8px 12px 0}
+.wmp.min .wmp-progress .wmp-times{margin:0 2px 0}
+.wmp.min .wmp-controls{padding:4px 10px 10px}
 </style>
 </head>
 <body>
@@ -894,9 +902,11 @@ nav::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
         <img class="wmp-art" src="images/masterpiece-cover.jpg" alt="Masterpiece album cover" width="56" height="56" referrerpolicy="no-referrer" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e021719d854080a93f79651ac4e'}else{this.remove()}">
         <div class="wmp-meta"><b>Masterpiece</b><small>LNGSHOT</small></div>
       </div>
-      <input type="range" id="wmp-seek" min="0" max="100" value="0" step="0.1" aria-label="Seek">
-      <div class="wmp-times"><span id="wmp-cur">0:00</span><span id="wmp-dur">0:00</span></div>
     </div>
+  </div>
+  <div class="wmp-progress">
+    <input type="range" id="wmp-seek" min="0" max="100" value="0" step="0.1" aria-label="Seek">
+    <div class="wmp-times"><span id="wmp-cur">0:00</span><span id="wmp-dur">0:00</span></div>
   </div>
   <div class="wmp-controls" id="wmp-controls">
     <button type="button" class="wmp-ctl" id="wmp-back" aria-label="Back 10 seconds" title="Back 10s"><i class="fas fa-backward"></i><small>10s</small></button>
