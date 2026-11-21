@@ -298,10 +298,27 @@ footer{background:linear-gradient(180deg,rgba(24,98,200,.94),rgba(6,36,100,.97))
 .wmp.min .wmp-name-open{display:none}
 .wmp.min .wmp-name-min{display:flex}
 .wmp.min .wmp-bar.no-cover .wmp-disc{display:inline-block}
-.wmp-body{max-height:380px;overflow:hidden;transition:max-height .35s ease}
+.wmp-body{max-height:300px;overflow:hidden;transition:max-height .35s ease}
 .wmp.min .wmp-body{max-height:0}
-.wmp-embed{padding:0 10px 10px}
-.wmp-embed iframe{display:block;width:100%;border:0;border-radius:12px}
+
+/* Local audio player controls */
+.wmp-player{padding:12px 14px 14px}
+.wmp-now{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.wmp-art{width:56px;height:56px;flex:none;object-fit:cover;border-radius:10px;border:1px solid #fff;box-shadow:0 3px 8px rgba(0,40,110,.4)}
+.wmp-meta{display:flex;flex-direction:column;min-width:0;line-height:1.25}
+.wmp-meta b{font-family:'Fredoka',sans-serif;font-size:1.05rem;color:var(--secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wmp-meta small{font-size:.8rem;color:#1d4f91;font-weight:600}
+#wmp-seek{display:block;width:100%;height:22px;margin:0;accent-color:#1f7ae0;cursor:pointer}
+.wmp-times{display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:.72rem;color:#1d4f91;margin:0 2px 8px}
+.wmp-controls{display:flex;align-items:center;justify-content:center;gap:16px}
+.wmp-ctl{position:relative;width:46px;height:46px;padding:0;border-radius:50%;border:1px solid #fff;color:#fff;font-size:1rem;display:flex;align-items:center;justify-content:center;text-shadow:0 1px 2px rgba(0,40,110,.6);background:linear-gradient(180deg,#9bd8ff 0%,#2f8ef0 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 3px 8px rgba(0,40,110,.35);transition:var(--transition);-webkit-tap-highlight-color:transparent}
+.wmp-ctl:hover{filter:brightness(1.1);transform:translateY(-2px)}
+.wmp-ctl:active{transform:scale(.94)}
+.wmp-ctl i{margin-top:-6px}
+.wmp-ctl small{position:absolute;bottom:6px;font-size:.55rem;font-family:'DM Mono',monospace;font-weight:700}
+.wmp-ctl.play{width:58px;height:58px;font-size:1.3rem;border-color:#2f8a12;background:linear-gradient(180deg,#c6f77f 0%,#79d935 48%,#47b01c 52%,#7fdc3c 100%);box-shadow:0 6px 14px rgba(40,120,10,.4),inset 0 1px 0 rgba(255,255,255,.9)}
+.wmp-ctl.play i{margin-top:0}
+.wmp.playing .wmp-disc{animation:spin 3s linear infinite}
 
 /* Phones and tablets */
 @media(max-width:1080px){
@@ -321,6 +338,7 @@ footer{background:linear-gradient(180deg,rgba(24,98,200,.94),rgba(6,36,100,.97))
   .iot-carousel-container{height:280px}
   .win-btn:not(.close){display:none}
   .wmp{left:12px;bottom:12px;width:min(320px,calc(100vw - 84px))}
+  .wmp-controls{gap:12px}
   #scroll-top{right:14px;bottom:14px}
 }
 @media (prefers-reduced-motion:reduce){
@@ -751,7 +769,7 @@ footer{background:linear-gradient(180deg,rgba(24,98,200,.94),rgba(6,36,100,.97))
 </div>
 </footer>
 
-<!-- ═════════ MUSIC PLAYER: "Masterpiece" by LNGSHOT (Spotify embed) ═════════ -->
+<!-- ═════════ MUSIC PLAYER: "Masterpiece" by LNGSHOT (local file: audio/LNGSHOT Masterpiece.mp3) ═════════ -->
 <aside class="wmp" id="wmp" aria-label="Music player">
   <button type="button" class="wmp-bar" id="wmp-toggle" aria-expanded="true" aria-controls="wmp-body" title="Show or hide the music player">
     <i class="fas fa-compact-disc wmp-disc"></i>
@@ -761,10 +779,21 @@ footer{background:linear-gradient(180deg,rgba(24,98,200,.94),rgba(6,36,100,.97))
     <i class="fas fa-chevron-down wmp-chev"></i>
   </button>
   <div class="wmp-body" id="wmp-body">
-    <div class="wmp-embed">
-      <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/album/4wKPeePl9o838f30TCt8uG?utm_source=generator&si=0d1eab7df69c436c" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Spotify player: LNGSHOT"></iframe>
+    <div class="wmp-player">
+      <div class="wmp-now">
+        <img class="wmp-art" src="https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e021719d854080a93f79651ac4e" alt="Masterpiece album cover" width="56" height="56" referrerpolicy="no-referrer" onerror="this.remove()">
+        <div class="wmp-meta"><b>Masterpiece</b><small>LNGSHOT</small></div>
+      </div>
+      <input type="range" id="wmp-seek" min="0" max="100" value="0" step="0.1" aria-label="Seek">
+      <div class="wmp-times"><span id="wmp-cur">0:00</span><span id="wmp-dur">0:00</span></div>
+      <div class="wmp-controls">
+        <button type="button" class="wmp-ctl" id="wmp-back" aria-label="Back 10 seconds" title="Back 10s"><i class="fas fa-backward"></i><small>10s</small></button>
+        <button type="button" class="wmp-ctl play" id="wmp-play" aria-label="Play"><i class="fas fa-play"></i></button>
+        <button type="button" class="wmp-ctl" id="wmp-fwd" aria-label="Forward 10 seconds" title="Forward 10s"><i class="fas fa-forward"></i><small>10s</small></button>
+      </div>
     </div>
   </div>
+  <audio id="wmp-audio" preload="metadata" src="audio/LNGSHOT%20Masterpiece.mp3"></audio>
 </aside>
 
 <script>
@@ -871,6 +900,31 @@ function setWmp(collapsed){
 setWmp(window.matchMedia('(max-width:768px)').matches);
 wmpBtn.addEventListener('click',()=>setWmp(!wmp.classList.contains('min')));
 
+/* ── Local audio player controls ── */
+const audio=document.getElementById('wmp-audio');
+const playBtn=document.getElementById('wmp-play');
+const seek=document.getElementById('wmp-seek');
+const curEl=document.getElementById('wmp-cur');
+const durEl=document.getElementById('wmp-dur');
+const fmt=t=>{if(!isFinite(t))return'0:00';const m=Math.floor(t/60),s=Math.floor(t%60);return m+':'+String(s).padStart(2,'0')};
+let seeking=false;
+
+playBtn.addEventListener('click',()=>{
+  if(audio.paused)audio.play().catch(()=>{});else audio.pause();
+});
+document.getElementById('wmp-back').addEventListener('click',()=>{audio.currentTime=Math.max(0,audio.currentTime-10)});
+document.getElementById('wmp-fwd').addEventListener('click',()=>{audio.currentTime=Math.min(audio.duration||Infinity,audio.currentTime+10)});
+
+audio.addEventListener('play',()=>{playBtn.innerHTML='<i class="fas fa-pause"></i>';playBtn.setAttribute('aria-label','Pause');wmp.classList.add('playing')});
+audio.addEventListener('pause',()=>{playBtn.innerHTML='<i class="fas fa-play"></i>';playBtn.setAttribute('aria-label','Play');wmp.classList.remove('playing')});
+audio.addEventListener('loadedmetadata',()=>{durEl.textContent=fmt(audio.duration)});
+audio.addEventListener('timeupdate',()=>{
+  curEl.textContent=fmt(audio.currentTime);
+  if(!seeking&&audio.duration)seek.value=(audio.currentTime/audio.duration)*100;
+});
+audio.addEventListener('ended',()=>{audio.currentTime=0;seek.value=0});
+seek.addEventListener('input',()=>{seeking=true;if(audio.duration)curEl.textContent=fmt(seek.value/100*audio.duration)});
+seek.addEventListener('change',()=>{if(audio.duration)audio.currentTime=seek.value/100*audio.duration;seeking=false});
 
 /* ── Typing animation ── */
 const phrases=['Junior Software Engineer','Python • Flask • JavaScript','REST APIs & Databases','Agile Full-Stack Development'];
