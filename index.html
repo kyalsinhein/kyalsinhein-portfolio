@@ -608,6 +608,49 @@ img,svg{max-width:100%}
   .win-body{padding:16px 12px}
   .contact-link{font-size:.82rem;padding:8px 12px}
 }
+
+/* ════════ MOBILE MUSIC PLAYER: compact transparent bar, buttons beside the cover ════════ */
+@media all{
+  .wmp{
+    display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;
+    left:10px;right:64px;bottom:10px;width:auto;max-width:none;
+    border-radius:16px;
+    background:linear-gradient(160deg,rgba(255,255,255,.5) 0%,rgba(255,255,255,.2) 55%,rgba(190,225,255,.3) 100%)!important;
+    -webkit-backdrop-filter:blur(14px) saturate(160%)!important;backdrop-filter:blur(14px) saturate(160%)!important;
+    border:1px solid rgba(255,255,255,.85);
+    box-shadow:0 10px 26px rgba(0,50,130,.28),inset 0 1px 0 rgba(255,255,255,.95)
+  }
+  /* Row 1: [cover + title] [buttons] ... chevron pinned to the far right */
+  .wmp-bar{grid-column:1;grid-row:1;background:none;border:none;padding:6px 4px 6px 8px;min-width:0;color:var(--secondary);text-shadow:0 1px 0 rgba(255,255,255,.7)}
+  .wmp.min .wmp-bar{padding:6px 4px 6px 8px}
+  .wmp-bar .wmp-name-min{min-width:0}
+  .wmp-name-min b{font-size:.92rem}
+  .wmp-name-min small{font-size:.74rem;color:#0b3a7a}
+  .wmp-bar .wmp-chev{position:absolute;right:11px;top:0;height:50px;display:flex;align-items:center;font-size:.75rem;color:var(--primary-dark)}
+  .wmp-controls,.wmp.min .wmp-controls{grid-column:2;grid-row:1;padding:0 30px 0 0;gap:5px;justify-content:flex-end}
+  .wmp-ctl,.wmp.min .wmp-ctl{width:32px;height:32px;font-size:.78rem;border-radius:50%}
+  .wmp-ctl.play,.wmp.min .wmp-ctl.play{width:38px;height:38px;font-size:.95rem}
+  .wmp-ctl small,.wmp.min .wmp-ctl small{display:none}
+  .wmp-ctl i,.wmp.min .wmp-ctl i{margin-top:0}
+  /* The duplicate cover/title block is not needed on mobile */
+  .wmp-body,.wmp.min .wmp-body{display:none}
+  /* Seek bar only appears when the player is expanded */
+  .wmp-progress{grid-column:1 / -1;grid-row:2;padding:0 14px 6px}
+  .wmp.min .wmp-progress{display:none}
+  .wmp-progress .wmp-times{margin:0 2px 2px}
+  footer{padding-bottom:90px}
+}
+/* Desktop: same compact bar, fixed width at the bottom-left */
+@media(min-width:769px){
+  .wmp{right:auto;left:20px;bottom:20px;width:380px}
+  .wmp-bar{padding:7px 4px 7px 10px}
+  .wmp.min .wmp-bar{padding:7px 4px 7px 10px}
+  .wmp-bar .wmp-chev{right:14px;height:54px}
+  .wmp-controls,.wmp.min .wmp-controls{padding-right:36px;gap:6px}
+  .wmp-ctl,.wmp.min .wmp-ctl{width:34px;height:34px;font-size:.82rem}
+  .wmp-ctl.play,.wmp.min .wmp-ctl.play{width:42px;height:42px;font-size:1rem}
+  .wmp-name-min b{font-size:1rem}
+}
 </style>
 </head>
 <body>
@@ -1162,7 +1205,7 @@ function setWmp(collapsed){
   wmpBtn.setAttribute('aria-expanded',collapsed?'false':'true');
   wmpBody.inert=collapsed;
 }
-setWmp(window.matchMedia('(max-width:768px)').matches);
+setWmp(true);
 wmpBtn.addEventListener('click',()=>setWmp(!wmp.classList.contains('min')));
 
 /* ── Local audio player controls ── */
