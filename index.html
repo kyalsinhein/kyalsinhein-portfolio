@@ -657,6 +657,24 @@ img,svg{max-width:100%}
   .wmp-name-min b{font-size:1rem}
   .wmp-art{width:150px;height:150px}
 }
+
+/* ════════ EXPANDED PLAYER: cover on the left; title, artist and buttons stacked on the right ════════ */
+.wmp:not(.min){grid-template-columns:auto minmax(0,1fr);column-gap:16px;padding:0 14px 4px}
+.wmp:not(.min) .wmp-bar{grid-column:1 / -1;grid-row:1;padding:9px 0 7px}
+.wmp:not(.min) .wmp-body,
+.wmp:not(.min) .wmp-player,
+.wmp:not(.min) .wmp-now{display:contents}
+.wmp:not(.min) .wmp-art{grid-column:1;grid-row:2 / span 2;align-self:start}
+.wmp:not(.min) .wmp-meta{grid-column:2;grid-row:2;align-self:end;margin:0 0 8px}
+.wmp:not(.min) .wmp-controls{grid-column:2;grid-row:3;align-self:start;justify-content:flex-start;padding:0;gap:6px;flex-wrap:nowrap}
+.wmp:not(.min) .wmp-progress{grid-column:1 / -1;grid-row:4;padding:10px 0 4px}
+@media(max-width:768px){
+  .wmp:not(.min){column-gap:12px;padding:0 12px 2px}
+  .wmp:not(.min) .wmp-art{width:112px;height:112px}
+  .wmp:not(.min) .wmp-controls{gap:3px}
+  .wmp:not(.min) .wmp-ctl{width:28px;height:28px;font-size:.7rem}
+  .wmp:not(.min) .wmp-ctl.play{width:34px;height:34px;font-size:.85rem}
+}
 </style>
 </head>
 <body>
