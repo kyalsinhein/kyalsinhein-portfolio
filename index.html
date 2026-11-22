@@ -694,6 +694,11 @@ img,svg{max-width:100%}
 .wmp-mute{flex:none;width:30px;height:30px;padding:0;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:var(--primary-dark);text-shadow:0 1px 0 rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.9);background:linear-gradient(180deg,rgba(255,255,255,.75),rgba(255,255,255,.18));box-shadow:0 3px 8px rgba(0,50,130,.2),inset 0 1px 0 #fff;transition:filter .2s ease;transform:none!important}
 .wmp-mute:hover{filter:brightness(1.08)}
 #wmp-vol{flex:1;min-width:0;height:22px;margin:0;accent-color:#1f7ae0;cursor:pointer}
+
+/* Volume sits under the playback buttons, beside the cover */
+.wmp:not(.min) .wmp-art{grid-row:2 / span 3}
+.wmp:not(.min) .wmp-volume{grid-column:2;grid-row:4;align-self:start;margin:10px 0 0}
+.wmp:not(.min) .wmp-progress{grid-row:5}
 </style>
 </head>
 <body>
@@ -1134,10 +1139,10 @@ img,svg{max-width:100%}
       </div>
     </div>
   </div>
+    <div class="wmp-volume"><button type="button" class="wmp-mute" id="wmp-mute" aria-label="Mute" title="Mute / Unmute"><i class="fas fa-volume-high"></i></button><input type="range" id="wmp-vol" min="0" max="100" value="80" step="1" aria-label="Volume"></div>
   <div class="wmp-progress">
     <input type="range" id="wmp-seek" min="0" max="100" value="0" step="0.1" aria-label="Seek">
     <div class="wmp-times"><span id="wmp-cur">0:00</span><span id="wmp-dur">0:00</span></div>
-    <div class="wmp-volume"><button type="button" class="wmp-mute" id="wmp-mute" aria-label="Mute" title="Mute / Unmute"><i class="fas fa-volume-high"></i></button><input type="range" id="wmp-vol" min="0" max="100" value="80" step="1" aria-label="Volume"></div>
   </div>
   <div class="wmp-controls" id="wmp-controls">
     <button type="button" class="wmp-ctl" id="wmp-back" aria-label="Back 10 seconds" title="Back 10s"><i class="fas fa-backward"></i><small>10s</small></button>
