@@ -697,7 +697,8 @@ img,svg{max-width:100%}
 
 /* Volume sits under the playback buttons, beside the cover */
 .wmp:not(.min) .wmp-art{grid-row:2 / span 3}
-.wmp:not(.min) .wmp-volume{grid-column:2;grid-row:4;align-self:start;margin:10px 0 0}
+.wmp:not(.min){grid-template-columns:auto max-content 1fr}
+.wmp:not(.min) .wmp-volume{grid-column:2;grid-row:4;align-self:start;margin:10px 0 0;width:0;min-width:100%}
 .wmp:not(.min) .wmp-progress{grid-row:5}
 </style>
 </head>
